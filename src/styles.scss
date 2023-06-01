@@ -43,6 +43,10 @@ body {
   @include flexbox;
 }
 
+.mdc-text-field--disabled.mdc-text-field--filled {
+  background-color: #e2e2e2 !important;
+}
+
 ///////////////////////////////
 ::-webkit-scrollbar {
   width: 5px;

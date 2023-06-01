@@ -7,7 +7,8 @@
         <button (click)="editBasicDetails = !editBasicDetails" mat-mini-fab matTooltip="Edit your Details">
           <mat-icon color="primary">edit</mat-icon>
         </button>
-        <button (click)="saveBasicDetails()" *ngIf="!editBasicDetails" mat-mini-fab matTooltip="Save Details">
+        <button (click)="saveBasicDetails()" *ngIf="!editBasicDetails" id="saveBtn" mat-mini-fab
+                matTooltip="Save Details">
           <mat-icon color="primary">save</mat-icon>
         </button>
         <button mat-mini-fab matTooltip="Add Details">
@@ -76,11 +77,12 @@
         <p>
           <mat-form-field class="example-full-width">
             <mat-label>Address</mat-label>
-            <textarea disabled matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+            <textarea [disabled]="editBasicDetails" matInput
+                      placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Address 2</mat-label>
-            <textarea disabled matInput></textarea>
+            <textarea [disabled]="editBasicDetails" matInput></textarea>
           </mat-form-field>
         </p>
       </div>

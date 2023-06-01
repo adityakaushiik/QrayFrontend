@@ -1,4 +1,5 @@
 //tab 1
+
 .edit-add-buttons {
   display: flex;
   flex-direction: row;
@@ -28,6 +29,12 @@
   .actions {
     display: flex;
     flex-direction: column;
+
+    #saveBtn {
+      mat-icon {
+        color: -moz-mac-accentdarkestshadow;
+      }
+    }
 
     button {
       margin: 0px 10px;

@@ -85,5 +85,6 @@ export class DocumentsComponent implements OnInit {
 
   saveBasicDetails() {
     console.log('saveBasicDetails');
+    this.editBasicDetails = true;
   }
 }
