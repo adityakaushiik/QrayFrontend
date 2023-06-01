@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+///////////////////////////////
+@mixin flexbox($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify !important;
+  align-content: $align;
+}
+
+.custom-flexbox {
+  @include flexbox(row, space-between, center);
+}
+
+///////////////////////////////
+.results {
+  @include flexbox(row, flex-start, center) ;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 10px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+///////////////////////////////
+.mdc-evolution-chip-set__chips {
+  @include flexbox;
+}
+
+///////////////////////////////
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b0aeae;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6f6e6e;
+}

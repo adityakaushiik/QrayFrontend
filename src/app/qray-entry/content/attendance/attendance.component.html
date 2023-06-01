@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>All Attendance</mat-card-title>
+    <div>
+      <button (click)="createNewAttendance()" color="primary" mat-button matTooltip="Create new">
+        <mat-icon>add</mat-icon>
+        Create New
+      </button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="results">
+      <mat-card *ngFor="let attendance of attendanceListing" class="card">
+        <mat-card-content (click)="showAttenders(attendance)">
+          <mat-card-title>{{attendance.name}}</mat-card-title>
+          <mat-card-subtitle>{{attendance.creationDate | date:'medium'}}</mat-card-subtitle>
+          <mat-card-subtitle><strong> Total Attenders : </strong>{{attendance.totalAttenders}}</mat-card-subtitle>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button color="primary" mat-button>
+            <mat-icon>edit</mat-icon>
+            Edit
+          </button>
+          <button (click)="deleteAttendance(attendance)" color="warn" mat-button>
+            <mat-icon>delete</mat-icon>
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

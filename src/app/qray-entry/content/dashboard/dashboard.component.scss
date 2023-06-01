@@ -1,0 +1,34 @@
+
+.dashboard-container {
+  //border: 1px solid black;
+  height: 98%;
+  padding: 5px;
+
+  .left-container {
+    width: 38%;
+
+    .chips {
+      width: 100%;
+      margin-bottom: 2%;
+    }
+
+    .dashboard-example-card {
+      margin-bottom: 3%;
+    }
+  }
+
+  .right-container {
+    width: 58%;
+
+    .show-card-details {
+      margin: 2%;
+      border-radius: 5px;
+      padding: 5% 2%;
+      height: 92%;
+    }
+
+    .mat-mdc-card {
+      background-color: #f3f3f3;
+    }
+  }
+}

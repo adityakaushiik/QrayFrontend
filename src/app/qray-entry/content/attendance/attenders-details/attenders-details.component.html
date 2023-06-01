@@ -1,0 +1,80 @@
+<div class="attendanceTable">
+  <table [dataSource]="data" class="mat-elevation-z8 demo-table" mat-table>
+    <!-- Date Column -->
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef id="reimbursementHistoryDate" mat-header-cell>Id</th>
+      <td *matCellDef="let element" mat-cell>
+        <div class="form-group">
+          {{element.attendersId}}
+        </div>
+      </td>
+      <td *matFooterCellDef mat-footer-cell></td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef id="reimbursementHistoryDescription" mat-header-cell>Name</th>
+      <td *matCellDef="let element" mat-cell>
+        <div class="form-group">
+          {{element.displayName}}
+        </div>
+      </td>
+      <td *matFooterCellDef mat-footer-cell></td>
+    </ng-container>
+
+    <!-- Nature Column -->
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef id="reimbursementHistoryExpenseNature" mat-header-cell>Date</th>
+      <td *matCellDef="let element" mat-cell>
+        <div class="form-group">
+              <span>
+              {{element.addedDateTime | date:'medium'}}
+            </span>
+        </div>
+      </td>
+      <td *matFooterCellDef mat-footer-cell></td>
+    </ng-container>
+
+    <!-- File Column -->
+    <ng-container matColumnDef="email">
+      <th *matHeaderCellDef id="reimbursementHistoryFile" mat-header-cell>Email</th>
+      <td *matCellDef="let element" mat-cell>
+        <div class="form-group">
+          <span>
+            {{element.email}}
+          </span>
+        </div>
+      </td>
+      <td *matFooterCellDef class="footerCell" mat-footer-cell></td>
+    </ng-container>
+
+    <ng-container id="reimbusementHistoryActionsColumn" matColumnDef="actions">
+      <th *matHeaderCellDef id="historyActions" mat-header-cell>
+        <button (click)="generatePDF()" mat-icon-button matTooltip="Export as pdf">
+          <mat-icon>save_alt</mat-icon>
+        </button>
+        <button (click)="createQRCode('hello my man')" mat-icon-button matTooltip="add more attendees">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td *matCellDef="let element" mat-cell>
+        <div id="historyActionsBody">
+          <button mat-icon-button matTooltip="Delete Record">
+            <mat-icon color="warn">delete_forever</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Edit">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+        </div>
+      </td>
+      <td *matFooterCellDef mat-footer-cell>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" id="reimbursementHistoryHeader" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;let i = index" mat-row></tr>
+    <tr *matFooterRowDef="displayedColumns" id="reimbursementHistoryFooter" mat-footer-row>
+    </tr>
+  </table>
+
+</div>

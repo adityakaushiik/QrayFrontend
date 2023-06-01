@@ -1,0 +1,67 @@
+.add-documents {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.js .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile-5 + label {
+  color: #f0f0f0;
+}
+
+.inputfile + label {
+  /* max-width: 80%; */
+  /* font-size: 1.25rem; */
+  font-weight: 700;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+  cursor: pointer;
+  display: inline-block;
+  /* overflow: hidden; */
+  padding: 0.625rem 1.25rem;
+}
+
+.inputfile-5 + label figure {
+  width: 100px;
+  height: 135px;
+  background-color: #c7c7c7;
+  display: block;
+  position: relative;
+  padding: 30px;
+  margin: 0 auto 10px;
+}
+
+.inputfile-5 + label svg {
+  width: 100%;
+  height: 100%;
+  fill: #f1e5e6;
+}
+
+.inputfile + label svg {
+
+  width: 105px;
+  height: 115px;
+  vertical-align: middle;
+  fill: currentColor;
+  /* margin-top: -0.25em; */
+  /* margin-right: 0.25em;
+  } */
+}
+
+.part1 {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+

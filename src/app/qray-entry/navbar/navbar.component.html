@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <button (click)="toggleSidenav.emit()" aria-label="Example icon-button with menu icon" class="example-icon"
+          mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Qray Dashboard</span>
+  <span class="navbar-spacer"></span>
+  <button (click)="logout()" color="accent" mat-raised-button>
+    <mat-icon>logout</mat-icon>
+    Logout
+  </button>
+</mat-toolbar>
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
