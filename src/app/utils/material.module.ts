@@ -53,9 +53,10 @@ const MaterialComponents = [
   imports: [
     MaterialComponents,
     MatDatepickerModule,
-    MatNativeDateModule],
+    MatNativeDateModule,
+  ],
   exports: [MaterialComponents],
-  providers: [MatDatepickerModule]
+  providers: [MatDatepickerModule],
 })
 export class MaterialModule {
 }

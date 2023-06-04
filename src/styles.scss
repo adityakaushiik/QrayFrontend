@@ -47,6 +47,11 @@ body {
   background-color: #e2e2e2 !important;
 }
 
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #bfb8ce !important;
+  border-radius: 0;
+}
+
 ///////////////////////////////
 ::-webkit-scrollbar {
   width: 5px;

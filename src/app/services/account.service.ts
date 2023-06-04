@@ -13,6 +13,7 @@ export class AccountService {
   public userSubject: BehaviorSubject<LoginResponse>;
 
   // private baseUrl = 'http://65.2.169.108:8080/api/';
+
   private baseUrl = 'http://localhost:8080/api/';
 
   constructor(private router: Router, private http: HttpClient) {

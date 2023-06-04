@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "./MaterialModule/material.module";
+import {MaterialModule} from "./utils/material.module";
 import {DashboardComponent} from './qray-entry/content/dashboard/dashboard.component';
 import {SignupComponent} from './signup/signup.component';
 import {QrayEntryComponent} from './qray-entry/qray-entry.component';
@@ -19,6 +19,9 @@ import {DocumentsComponent} from './qray-entry/content/documents/documents.compo
 import {AttendersDetailsComponent} from './qray-entry/content/attendance/attenders-details/attenders-details.component';
 import {QrCodeComponent} from './qray-entry/content/attendance/qr-code/qr-code.component';
 import {AddDocumentComponent} from './qray-entry/content/documents/add-document/add-document.component';
+import {AccessInformationComponent} from './access-information/access-information.component';
+import {CommonModule} from "@angular/common";
+import {DocumentViewComponent} from "./access-information/document-view/document-view.component";
 
 @NgModule({
   declarations: [
@@ -35,8 +38,11 @@ import {AddDocumentComponent} from './qray-entry/content/documents/add-document/
     AttendersDetailsComponent,
     QrCodeComponent,
     AddDocumentComponent,
+    AccessInformationComponent,
+    DocumentViewComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

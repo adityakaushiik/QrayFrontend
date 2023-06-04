@@ -1,0 +1,30 @@
+.documentCard {
+  color: white;
+  background-color: #b7abce;
+  margin: 10px;
+  border: 3px solid #9078bd;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+
+    #saveBtn {
+      mat-icon {
+        color: -moz-mac-accentdarkestshadow;
+      }
+    }
+
+    button {
+      margin: 0px 10px;
+      background-color: transparent;
+      box-shadow: none;
+
+      mat-icon {
+        color: #7b5fb2;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 export interface DocumentInfo {
   "documentType": string,
   "documentReference": string,
-  "documentId": string
+  "documentId"?: string
+  "documentUrl"?: string,
 }

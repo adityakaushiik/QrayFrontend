@@ -19,8 +19,8 @@ export class DocumentsComponent implements OnInit {
   editBasicDetails = true;
 
   constructor(private accountService: AccountService,
-              private utilsService: UtilsService,
               private dialog: MatDialog,
+              private utilsService: UtilsService,
               private router: Router) {
   }
 

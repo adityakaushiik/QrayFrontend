@@ -1,0 +1,29 @@
+<div *ngIf="allInfoReceived" class="access-info-component">
+  <mat-card class="access-info-container">
+    <mat-card-content>
+
+      <mat-card-title>Info</mat-card-title>
+      <mat-divider></mat-divider>
+      <div class="results">
+        <div *ngFor="let info of info | keyvalue" class="info-container">
+          <mat-form-field class="example-full-width">
+            <mat-label>{{info.key}}</mat-label>
+            <input disabled matInput value="{{info.value}}">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-card-title>Documents</mat-card-title>
+      <mat-divider></mat-divider>
+      <div class="results">
+        <div *ngFor="let doc of documents" class="doc-container">
+          <app-document-view [document]="doc"></app-document-view>
+        </div>
+      </div>
+
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
