@@ -1,3 +1,118 @@
+.overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+
+.create-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //font-size: 10px;
+}
+
+.show-card-details .mat-mdc-card {
+  background-color: #ffffff !important;
+}
+
+.results {
+  justify-content: center !important;
+}
+
+.card-class {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .content {
+    p {
+      margin: 0 0 3px;
+    }
+  }
+}
+
+
+.document-item {
+  padding: 5px;
+  border-bottom: 1px solid #f3f3f3;
+  margin: 2px 0px;
+
+  .body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px;
+
+    .inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
+.document-item:hover {
+  border-radius: 5px;
+  background-color: #c7c7c7;
+  cursor: pointer;
+
+}
+
+.device-item {
+  padding: 5px;
+  border-bottom: 1px solid #f3f3f3;
+  margin: 2px 0px;
+
+  .body {
+    padding: 5px 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px;
+  }
+}
+
+.device-item:hover {
+  border-radius: 5px;
+  background-color: #c7c7c7;
+  cursor: pointer;
+}
+
+//.card-content-container {
+//  display: flex;
+//  flex-direction: row;
+//}
+
+.cardActions {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    height: 100%;
+    border-radius: 5px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #dadada;
+    //box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .delete-btn:hover {
+    background-color: #da2626 !important;
+
+    mat-icon {
+      color: white !important;
+    }
+  }
+
+}
 
 .dashboard-container {
   //border: 1px solid black;
@@ -10,10 +125,6 @@
     .chips {
       width: 100%;
       margin-bottom: 2%;
-    }
-
-    .dashboard-example-card {
-      margin-bottom: 3%;
     }
   }
 
@@ -32,3 +143,27 @@
     }
   }
 }
+
+.dashboard-example-card {
+  //margin-bottom: 3%;
+  margin: 10px;
+  width: 100%;
+  max-width: 400px;
+  min-width: 250px;
+  cursor: pointer;
+
+  .card-class:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.dashboard-example-card :hover {
+  //box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+  //box-shadow: 6.2px 12.5px 12.5px hsl(0deg 0% 0% / 0.31);
+}
+
+//
+//.card-class :hover {
+//  background-color: #f1f1f1;
+//  cursor: pointer;
+//}

@@ -134,4 +134,28 @@ export class AccountService {
       headers: this.header
     });
   }
+
+  public getQrLinksListing() {
+    return this.http.get<any>(this.baseUrl + 'qrLink/get', {
+      headers: this.header
+    });
+  }
+
+  public createQrLink(type: string, sessionName: string, validTime: number, documentIds: string[]) {
+    return this.http.post<any>(this.baseUrl + 'qrLink/create', documentIds, {
+      params: {
+        type: type,
+        sessionName: sessionName,
+        validTime: validTime
+      },
+      headers: this.header
+    });
+  }
+
+  public deleteQrLink(qrLinkId: string) {
+    return this.http.delete(this.baseUrl + 'qrLink/delete', {
+      params: {qrId: qrLinkId},
+      headers: this.header
+    });
+  }
 }

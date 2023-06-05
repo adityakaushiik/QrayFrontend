@@ -22,6 +22,11 @@ import {AddDocumentComponent} from './qray-entry/content/documents/add-document/
 import {AccessInformationComponent} from './access-information/access-information.component';
 import {CommonModule} from "@angular/common";
 import {DocumentViewComponent} from "./access-information/document-view/document-view.component";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {
+  CreateNewQrDialogComponent
+} from "./qray-entry/content/dashboard/create-new-qr-dialog/create-new-qr-dialog.component";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -39,7 +44,8 @@ import {DocumentViewComponent} from "./access-information/document-view/document
     QrCodeComponent,
     AddDocumentComponent,
     AccessInformationComponent,
-    DocumentViewComponent
+    DocumentViewComponent,
+    CreateNewQrDialogComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +55,8 @@ import {DocumentViewComponent} from "./access-information/document-view/document
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+    MatBottomSheetModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

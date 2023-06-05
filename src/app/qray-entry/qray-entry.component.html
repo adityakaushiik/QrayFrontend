@@ -1,7 +1,7 @@
 <app-navbar (toggleSidenav)="drawer.toggle()"></app-navbar>
 
-<mat-drawer-container [hasBackdrop]="false" class="main-container">
-  
+<mat-drawer-container [hasBackdrop]="true" class="main-container">
+
   <mat-drawer #drawer [mode]="'side'" class="sideNav">
     <app-sidenav></app-sidenav>
   </mat-drawer>

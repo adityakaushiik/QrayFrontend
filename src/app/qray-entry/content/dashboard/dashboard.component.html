@@ -1,5 +1,12 @@
-<div class="dashboard-container custom-flexbox">
+<div class="create-button overlay">
+  <button (click)="openCreateDialog()" color="accent" mat-fab
+          matTooltip="Create New Qr/Link">
+    <mat-icon>add</mat-icon>
+    <!--    Create New-->
+  </button>
+</div>
 
+<div class="dashboard-container custom-flexbox">
   <div class="left-container">
     <mat-chip-listbox aria-label="Fish selection" class="chips custom-flexbox">
       <mat-chip-option>Recently Made</mat-chip-option>
@@ -9,35 +16,80 @@
     </mat-chip-listbox>
 
     <div class="results">
-      <div (mouseenter)="openSnackBar('this','that')" *ngFor="let data of exampleData">
-        <mat-card class="dashboard-example-card">
-          <mat-card-header>
-            <mat-card-title>ShipsKart-Hr-Link : Active
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>aklsdha;lskfghasjkfhasjklfhaskdn.asjgrd;oqwjrgf;qkwj.sfgasjfgalsfg</p>
-            <p>aklsdha;lskfghasjkfhasjklfhaskdn.asjgrd;oqwjrgf;qkwj.sfgasjfgalsfg</p>
-            <p>aklsdha;lskfghasjkfhasjklfhaskdn.asjgrd;oqwjrgf;qkwj.sfgasjfgalsfg</p>
-          </mat-card-content>
-          <mat-card-actions style="display: flex ; align-content: flex-start">
-            <button mat-raised-button style="margin-right: 20px">SHARE</button>
-            <button color="warn" mat-raised-button>
-              Delete
+      <div (mouseenter)="qrDetails=data" *ngFor="let data of qrData" class="dashboard-example-card">
+        <mat-card class="card-class" matTooltip="{{getLastSeen(data.lastSeen)}}" matTooltipPosition="right">
+          <div class="card-content-container">
+            <mat-card-header>
+              <mat-card-title>{{data.sessionName}}</mat-card-title>
+              <mat-card-subtitle>{{data.creationDate | date:'medium'}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="content">
+              <p><strong>Security Type : </strong>{{data.sessionType}}</p>
+              <p><strong>Number of Devices : </strong>
+                <span *ngIf="data.deviceList">{{data.deviceList.length}}</span>
+                <span *ngIf="!data.deviceList">0</span>
+              </p>
+              <p><strong>Documents Access : </strong>{{data.documentIds.length}}</p>
+            </mat-card-content>
+          </div>
+          <mat-card-actions class="cardActions">
+            <button>
+              <mat-icon>share</mat-icon>
+            </button>
+            <button class="delete-btn">
+              <mat-icon (click)="deleteQrLink(data.id)" color="warn">delete</mat-icon>
             </button>
           </mat-card-actions>
-          <mat-card-footer style="text-align: right">
-            <mat-card-subtitle>(last seen 5 mins ago)
-            </mat-card-subtitle>
-          </mat-card-footer>
         </mat-card>
       </div>
     </div>
   </div>
 
-  <div class="right-container">
+  <div *ngIf="qrDetails.id!=null" class="right-container">
     <mat-card class="show-card-details">
-      <mat-card-title>Recently Updated</mat-card-title>
+      <mat-card-content>
+
+        <div class="document-info">
+          <mat-card-title>Documents</mat-card-title>
+          <mat-divider></mat-divider>
+
+          <div *ngFor="let doc of qrDetails.documents" class="document-item">
+            <mat-card>
+              <div class="body">
+                <div class="inner">
+                  <mat-icon>description</mat-icon>
+                  <span>{{doc.documentType}}</span>
+                </div>
+                <button (click)="viewDocument(doc.documentReference)" mat-button>
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+
+        <div class="device-info">
+          <mat-card-title>Devices</mat-card-title>
+          <mat-divider></mat-divider>
+          <div *ngFor="let device of qrDetails.deviceList" class="device-item">
+            <mat-card>
+              <div class="body">
+                <mat-icon *ngIf="device.deviceType == 'Desktop'">computer</mat-icon>
+                <mat-icon *ngIf="device.deviceType == 'Mobile'">phone_iphone</mat-icon>
+                <div>Ip : {{device.ipAddress}}</div>
+                <div>Type : {{device.deviceType}}</div>
+                <div>Height : {{device.screenHeight}}</div>
+                <div>Width : {{device.screenWidth}}</div>
+                <!--                <button mat-button>-->
+                <!--                  <mat-icon>eye</mat-icon>-->
+                <!--                </button>-->
+              </div>
+            </mat-card>
+          </div>
+
+
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>

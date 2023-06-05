@@ -1,0 +1,54 @@
+<mat-stepper #stepper class="stepper">
+  <mat-step>
+    <ng-template matStepLabel>Select Documents</ng-template>
+    <div *ngFor="let doc of documentsInfo">
+      <mat-card class="documentitem">
+        <mat-card-content class="document-body" style="display: flex">
+          <span>{{doc.documentType}}</span>
+          <mat-slide-toggle (change)="toggleDocument(doc.documentId)"></mat-slide-toggle>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Give Names</ng-template>
+
+    <div style="display: flex ; flex-direction: column">
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input #name matInput>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Time (in hours)</mat-label>
+        <input #time matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <select #type matNativeControl required>
+          <option selected value="OTA">One Time Password</option>
+          <option value="SM">Secure Mode</option>
+          <option value="GM">Guest Mode</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button (click)="createQrLink(
+        type.value,
+        name.value,
+        time.value,
+        this.documents
+      )" [disabled]="time.value=='' || name.value=='' || this.documents.length==0" color="accent" mat-raised-button
+              matStepperNext>Submit
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+
