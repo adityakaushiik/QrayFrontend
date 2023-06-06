@@ -1,8 +1,18 @@
-<div style="text-align: center">
-  <div>
-    <h1>QR Code</h1>
-    <p>Scan the QR code below to access the site on your mobile device.</p>
-  </div>
-  <canvas id="qrcodeCanvas"></canvas>
-  <p>Or, <a href="<?php echo $this->url('home'); ?>">click here</a> to return to the home page.</p>
+<div class="refresh-btn" style="padding: 10px ; display: flex ; justify-content: center">
+  <button (click)="refresh()" color="primary" mat-raised-button>
+    <mat-icon>refresh</mat-icon>
+    Refresh
+  </button>
 </div>
+<mat-divider></mat-divider>
+<mat-card>
+  <div style="text-align: center ; padding: 10px">
+    <div>
+      <mat-card-title>QR Code</mat-card-title>
+      <mat-card-subtitle>Scan the QR code below to add a person into the list</mat-card-subtitle>
+      <mat-card-subtitle>then click on the refresh icon to view if the record is added</mat-card-subtitle>
+    </div>
+    <canvas id="qrcodeCanvas"></canvas>
+    <!--  <p>Or, <a href="<?php echo $this->url('home'); ?>">click here</a> to return to the home page.</p>-->
+  </div>
+</mat-card>

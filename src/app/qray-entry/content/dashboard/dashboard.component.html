@@ -1,6 +1,6 @@
 <div class="create-button overlay">
-  <button (click)="openCreateDialog()" color="accent" mat-fab
-          matTooltip="Create New Qr/Link">
+  <button (click)="openCreateDialog()" class="create-btn"
+          color="accent" mat-fab matTooltip="Create New Qr/Link" matTooltipPosition="left">
     <mat-icon>add</mat-icon>
     <!--    Create New-->
   </button>
@@ -9,14 +9,14 @@
 <div class="dashboard-container custom-flexbox">
   <div class="left-container">
     <mat-chip-listbox aria-label="Fish selection" class="chips custom-flexbox">
-      <mat-chip-option>Recently Made</mat-chip-option>
-      <mat-chip-option>Recently Updated</mat-chip-option>
-      <mat-chip-option color="accent" selected>Active</mat-chip-option>
-      <mat-chip-option color="warn">Expired</mat-chip-option>
+      <mat-chip-option class="hover">Recently Made</mat-chip-option>
+      <mat-chip-option class="hover">Recently Updated</mat-chip-option>
+      <mat-chip-option class="hover" color="accent" selected>Active</mat-chip-option>
+      <mat-chip-option class="hover" color="warn">Expired</mat-chip-option>
     </mat-chip-listbox>
 
     <div class="results">
-      <div (mouseenter)="qrDetails=data" *ngFor="let data of qrData" class="dashboard-example-card">
+      <div (mouseenter)="qrDetails=data" *ngFor="let data of qrData" class="hover card dashboard-example-card">
         <mat-card class="card-class" matTooltip="{{getLastSeen(data.lastSeen)}}" matTooltipPosition="right">
           <div class="card-content-container">
             <mat-card-header>
@@ -45,15 +45,20 @@
     </div>
   </div>
 
-  <div *ngIf="qrDetails.id!=null" class="right-container">
-    <mat-card class="show-card-details">
-      <mat-card-content>
 
+  <div *ngIf="qrDetails!=dummyData" class="right-container">
+    <mat-card class="show-card-details">
+      <mat-card-header style="display: flex ; justify-content: flex-end">
+        <a (click)="qrDetails=dummyData" class="cancel-btn">
+          <mat-icon>clear</mat-icon>
+        </a>
+      </mat-card-header>
+      <mat-card-content>
         <div class="document-info">
           <mat-card-title>Documents</mat-card-title>
           <mat-divider></mat-divider>
 
-          <div *ngFor="let doc of qrDetails.documents" class="document-item">
+          <div *ngFor="let doc of qrDetails.documents" class="hover document-item">
             <mat-card>
               <div class="body">
                 <div class="inner">
@@ -71,7 +76,7 @@
         <div class="device-info">
           <mat-card-title>Devices</mat-card-title>
           <mat-divider></mat-divider>
-          <div *ngFor="let device of qrDetails.deviceList" class="device-item">
+          <div *ngFor="let device of qrDetails.deviceList" class="hover device-item">
             <mat-card>
               <div class="body">
                 <mat-icon *ngIf="device.deviceType == 'Desktop'">computer</mat-icon>

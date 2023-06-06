@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card style="background-color: transparent ; box-shadow: none">
   <mat-card-header>
     <mat-card-title>All Attendance</mat-card-title>
     <div>
@@ -11,7 +11,7 @@
 
   <mat-card-content>
     <div class="results">
-      <mat-card *ngFor="let attendance of attendanceListing" class="card">
+      <mat-card *ngFor="let attendance of attendanceListing" class="hover   card">
         <mat-card-content (click)="showAttenders(attendance)">
           <mat-card-title>{{attendance.name}}</mat-card-title>
           <mat-card-subtitle>{{attendance.creationDate | date:'medium'}}</mat-card-subtitle>

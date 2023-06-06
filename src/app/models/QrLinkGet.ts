@@ -6,7 +6,7 @@ export interface QrLinkGet {
   deviceList: DeviceInfo[];
   documentIds: string[],
   documents: DocumentInfo[],
-  id: string,
+  id: string | null,
   lastSeen: string,
   sessionName: string,
   sessionType: string,

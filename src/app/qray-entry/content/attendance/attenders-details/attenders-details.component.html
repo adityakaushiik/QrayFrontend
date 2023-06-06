@@ -1,3 +1,6 @@
+<div *ngIf="showQr">
+  <app-qr-code (emit)="refresh()" [text]="this.attendance.id"></app-qr-code>
+</div>
 <div class="attendanceTable">
   <table [dataSource]="data" class="mat-elevation-z8 demo-table" mat-table>
     <!-- Date Column -->
@@ -53,13 +56,13 @@
         <button (click)="generatePDF()" mat-icon-button matTooltip="Export as pdf">
           <mat-icon>save_alt</mat-icon>
         </button>
-        <button (click)="createQRCode('hello my man')" mat-icon-button matTooltip="add more attendees">
+        <button (click)="createQRCode(this.attendance.id)" mat-icon-button matTooltip="add more attendees">
           <mat-icon>add</mat-icon>
         </button>
       </th>
       <td *matCellDef="let element" mat-cell>
         <div id="historyActionsBody">
-          <button mat-icon-button matTooltip="Delete Record">
+          <button (click)="deleteAttendanceRecord(element.recordId)" mat-icon-button matTooltip="Delete Record">
             <mat-icon color="warn">delete_forever</mat-icon>
           </button>
           <button mat-icon-button matTooltip="Edit">
@@ -72,7 +75,7 @@
     </ng-container>
 
     <tr *matHeaderRowDef="displayedColumns" id="reimbursementHistoryHeader" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns;let i = index" mat-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;let i = index" id="attendance-details-row" mat-row></tr>
     <tr *matFooterRowDef="displayedColumns" id="reimbursementHistoryFooter" mat-footer-row>
     </tr>
   </table>

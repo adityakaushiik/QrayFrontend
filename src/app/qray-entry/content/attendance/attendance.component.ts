@@ -41,22 +41,10 @@ export class AttendanceComponent implements OnInit {
   }
 
   showAttenders(attendance: AttendanceInfo) {
-    if (attendance.totalAttenders === 0) {
-      this.utilsService.warningSnackBar('No attenders found');
-      return;
-    }
-    this.utilsService.showLoading();
-    this.accountService.getAttendanceListing(attendance.id).subscribe((res: any) => {
-      this.attenders = [...res];
-      this.dialog.open(AttendersDetailsComponent, {
-        data: this.attenders,
-        width: '80%',
-        height: '80%'
-      });
-      this.utilsService.hideLoading();
-    }, (err) => {
-      console.log(err);
-      this.utilsService.hideLoading();
+    this.dialog.open(AttendersDetailsComponent, {
+      data: attendance,
+      width: '80%',
+      height: '80%'
     });
   }
 

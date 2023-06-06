@@ -13,7 +13,18 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 })
 export class DashboardComponent implements OnInit {
   qrData: QrLinkGet[] = [];
-  qrDetails: QrLinkGet = {} as QrLinkGet;
+  dummyData: QrLinkGet = {
+    creationDate: '',
+    deviceList: [],
+    documentIds: [],
+    documents: [],
+    id: null,
+    lastSeen: '',
+    sessionName: '',
+    sessionType: '',
+    sessionValidTime: '',
+  }
+  qrDetails: QrLinkGet = this.dummyData;
 
   constructor(private accountService: AccountService,
               private utilsService: UtilsService,
@@ -51,7 +62,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  deleteQrLink(qrId: string) {
+  deleteQrLink(qrId: string | null) {
+    if (qrId == null)
+      return;
     this.accountService.deleteQrLink(qrId).subscribe((data: any) => {
         console.log(data);
       }, error => {

@@ -128,9 +128,9 @@ export class AccountService {
     });
   }
 
-  public removeAttendance(attendanceId: string, attendersId: string) {
-    return this.http.delete(this.baseUrl + 'attendance/delete', {
-      params: {attendanceId: attendanceId, attenderId: attendersId},
+  public removeAttendance(attendanceId: string, recordId: string) {
+    return this.http.delete(this.baseUrl + 'attendance/remove', {
+      params: {attendanceId: attendanceId, recordId: recordId},
       headers: this.header
     });
   }

@@ -93,7 +93,7 @@
   <mat-tab label="Documents">
 
     <div class="results">
-      <mat-card *ngFor="let document of documents" class="documentCard">
+      <mat-card *ngFor="let document of documents" class="hover documentCard">
         <div class="data">
           <mat-card-header>
             <mat-card-title>{{document.documentType}}</mat-card-title>
@@ -113,7 +113,7 @@
         </div>
       </mat-card>
 
-      <mat-card (click)="addDocument()" class="documentCard add-btn">
+      <mat-card (click)="addDocument()" class="hover documentCard add-btn">
         <mat-card-content style="display: flex;flex-direction: column;align-items: center;">
           <button disabled mat-fab>
             <mat-icon>add</mat-icon>

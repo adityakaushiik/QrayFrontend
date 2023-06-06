@@ -1,10 +1,12 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {AttendersInfo} from "../../../../models/AttendersInfo";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import {TDocumentDefinitions} from "pdfmake/interfaces";
-import {QrCodeComponent} from "../qr-code/qr-code.component";
+import {AttendanceInfo} from "../../../../models/AttendanceInfo";
+import {UtilsService} from "../../../../services/utils.service";
+import {AccountService} from "../../../../services/account.service";
 
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
@@ -15,16 +17,22 @@ import {QrCodeComponent} from "../qr-code/qr-code.component";
   templateUrl: './attenders-details.component.html',
   styleUrls: ['./attenders-details.component.scss']
 })
-export class AttendersDetailsComponent {
+export class AttendersDetailsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'date', 'email', 'actions'];
+  data: AttendersInfo[] = [];
+  showQr = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: AttendersInfo[],
-              // @Inject(MAT_DIALOG_DATA) public attendanceId: string,
-              private dialog: MatDialog) {
-    console.log(this.data);
+  constructor(@Inject(MAT_DIALOG_DATA) public attendance: AttendanceInfo,
+              private dialog: MatDialog,
+              private utilsService: UtilsService,
+              private accountService: AccountService) {
   }
 
   generatePDF() {
+    if (this.attendance.totalAttenders === 0) {
+      this.utilsService.warningSnackBar('No attenders found');
+      return;
+    }
     const documentDefinition: TDocumentDefinitions = {
       content: [
         {text: 'Attendance Details', style: 'header'},
@@ -53,13 +61,37 @@ export class AttendersDetailsComponent {
   }
 
   createQRCode(text: string) {
-    this.dialog.open(QrCodeComponent, {
-      data: text,
+    // this.dialog.open(QrCodeComponent, {
+    //   data: text,
+    // });
+    this.showQr = !this.showQr;
+  }
+
+  deleteAttendanceRecord(recordId: string) {
+    this.accountService.removeAttendance(this.attendance.id, recordId).subscribe((res: any) => {
+        console.log(res);
+        this.utilsService.successSnackBar('Record deleted successfully');
+      }, (err) => {
+        console.log(err);
+        this.utilsService.errorSnackBar('Error while deleting record');
+      },
+      () => {
+        this.ngOnInit();
+      });
+  }
+
+  refresh() {
+    this.ngOnInit();
+  }
+
+  ngOnInit(): void {
+    this.utilsService.showLoading();
+    this.accountService.getAttendanceListing(this.attendance.id).subscribe((res: any) => {
+      this.data = [...res];
+      this.utilsService.hideLoading();
+    }, (err) => {
+      console.log(err);
+      this.utilsService.hideLoading();
     });
   }
-
-  deleteAttendanceRecord(attendanceId: string, recordId: string) {
-
-  }
-
 }
