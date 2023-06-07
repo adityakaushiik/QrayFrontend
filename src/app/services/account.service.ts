@@ -12,7 +12,7 @@ export class AccountService {
   public user: Observable<LoginResponse>;
   public userSubject: BehaviorSubject<LoginResponse>;
 
-  // private baseUrl = 'http://65.2.169.108:8080/api/';
+  // private baseUrl = 'http://43.205.195.167:8080/api/';
 
   private baseUrl = 'http://localhost:8080/api/';
 
@@ -49,6 +49,21 @@ export class AccountService {
       this.userSubject.next(user);
       return user;
     }));
+  }
+
+  //
+  // email: string,
+  // password: string,
+  // firstName: string,
+  // lastName: string,
+  // phone: number,
+  // country: string,
+  // state: string
+  //
+  signup(value: any) {
+    return this.http.post(this.baseUrl + 'user/register', value, {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    });
   }
 
   logout() {

@@ -7,7 +7,7 @@
       <div [formGroup]="form" class="login-container">
         <mat-form-field appearance="fill" class="login-email-field">
           <mat-label>Enter your email</mat-label>
-          <input formControlName="email" matInput placeholder="pat@example.com" required>
+          <input formControlName="email" matInput placeholder="abcd@example.com" required>
           <mat-error *ngIf="this.form.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
@@ -22,11 +22,13 @@
 
       </div>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions style="display: flex; justify-content: space-between">
       <button (click)="login()" [disabled]="this.form.controls['email'].invalid" color="primary" mat-raised-button>
-        Login
+        <mat-spinner *ngIf="loading" class="spinner" diameter="20"></mat-spinner>
+        <span *ngIf="!loading">Login</span>
       </button>
+
+      <a routerLink="/signUp">Sign Up</a>
     </mat-card-actions>
   </mat-card>
-  <app-signup></app-signup>
 </div>

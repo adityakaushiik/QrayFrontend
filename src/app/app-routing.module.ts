@@ -8,9 +8,11 @@ import {ContentComponent} from "./qray-entry/content/content.component";
 import {AttendanceComponent} from "./qray-entry/content/attendance/attendance.component";
 import {DocumentsComponent} from "./qray-entry/content/documents/documents.component";
 import {AccessInformationComponent} from "./access-information/access-information.component";
+import {SignupComponent} from "./signup/signup.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'signUp', component: SignupComponent},
   {path: 'access/:token', component: AccessInformationComponent},
   {
     path: '', component: QrayEntryComponent, canActivate: [AuthGuardService], children: [

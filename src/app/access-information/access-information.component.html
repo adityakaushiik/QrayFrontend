@@ -5,7 +5,7 @@
       <mat-card-title>Info</mat-card-title>
       <mat-divider></mat-divider>
       <div class="results">
-        <div *ngFor="let info of info | keyvalue" class="info-container">
+        <div *ngFor="let info of info | keyvalue" class="hover info-container">
           <mat-form-field class="example-full-width">
             <mat-label>{{info.key}}</mat-label>
             <input disabled matInput value="{{info.value}}">
@@ -16,7 +16,7 @@
       <mat-card-title>Documents</mat-card-title>
       <mat-divider></mat-divider>
       <div class="results">
-        <div *ngFor="let doc of documents" class="doc-container">
+        <div *ngFor="let doc of documents" class="hover doc-container">
           <app-document-view [document]="doc"></app-document-view>
         </div>
       </div>

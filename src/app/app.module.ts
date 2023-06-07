@@ -27,6 +27,22 @@ import {
   CreateNewQrDialogComponent
 } from "./qray-entry/content/dashboard/create-new-qr-dialog/create-new-qr-dialog.component";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {ClipboardModule} from "@angular/cdk/clipboard";
+// import {WebSocketService} from "./services/web-socket.service";
+
+// export const environment = {
+//   production: false,
+//   socketUrl: 'ws://localhost:8080/socket.io',
+// };
+//
+//
+// const config: SocketIoConfig = {
+//   url: environment.socketUrl, // socket server url;
+//   options: {
+//     transports: ['websocket']
+//   }
+// }
 
 @NgModule({
   declarations: [
@@ -57,7 +73,11 @@ import {MatStepperModule} from "@angular/material/stepper";
     HttpClientModule,
     MatBottomSheetModule,
     MatStepperModule,
+    MatProgressSpinnerModule,
+    ClipboardModule,
+    // SocketIoModule.forRoot(config)
   ],
+  // WebSocketService
   providers: [],
   bootstrap: [AppComponent]
 })

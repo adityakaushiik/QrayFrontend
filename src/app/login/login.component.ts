@@ -28,6 +28,7 @@ export class LoginComponent {
 
   login() {
     this.loading = true;
+
     if (this.form.invalid) {
       this.loading = false;
       console.log("invalid form");

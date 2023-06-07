@@ -7,6 +7,7 @@ import {TDocumentDefinitions} from "pdfmake/interfaces";
 import {AttendanceInfo} from "../../../../models/AttendanceInfo";
 import {UtilsService} from "../../../../services/utils.service";
 import {AccountService} from "../../../../services/account.service";
+// import {WebSocketService} from "../../../../services/web-socket.service";
 
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
@@ -25,7 +26,9 @@ export class AttendersDetailsComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public attendance: AttendanceInfo,
               private dialog: MatDialog,
               private utilsService: UtilsService,
-              private accountService: AccountService) {
+              private accountService: AccountService,
+  ) {
+    // private webSocketService: WebSocketService
   }
 
   generatePDF() {
@@ -93,5 +96,13 @@ export class AttendersDetailsComponent implements OnInit {
       console.log(err);
       this.utilsService.hideLoading();
     });
+
+    // this.webSocketService.connectToWebSocket();
+    //
+    // this.webSocketService.listenForAttendanceChanges().subscribe((attendance: any) => {
+    //   // Handle the attendance change event
+    //   // Update attendance log or refresh necessary data
+    //   console.log('Attendance change event received:', attendance);
+    // });
   }
 }

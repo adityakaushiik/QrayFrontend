@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatBottomSheetRef} from "@angular/material/bottom-sheet";
 import {UtilsService} from "../../../../services/utils.service";
 import {AccountService} from "../../../../services/account.service";
 import {DocumentInfo} from "../../../../models/DocumentInfo";
+import {MatStepper} from "@angular/material/stepper";
 
 @Component({
   selector: 'app-create-new-qr-dialog',
@@ -10,13 +11,21 @@ import {DocumentInfo} from "../../../../models/DocumentInfo";
   styleUrls: ['./create-new-qr-dialog.component.scss']
 })
 export class CreateNewQrDialogComponent implements OnInit {
+  @ViewChild('stepper') stepper!: MatStepper;
   documentsInfo: DocumentInfo[] = [];
   public documents: string[] = [];
+  backendResponseReceived = false;
+  copyLink: string = "";
+  copied: string = 'Copy';
 
   constructor(private utilsService: UtilsService,
               private accountService: AccountService,
-              private bottomSheetRef: MatBottomSheetRef<CreateNewQrDialogComponent>) {
+              public bottomSheetRef: MatBottomSheetRef<CreateNewQrDialogComponent>) {
 
+  }
+
+  copyToClipboard(bool: boolean) {
+    this.copied = bool ? 'Copied' : 'Copy';
   }
 
   toggleDocument(document: string | undefined): void {
@@ -39,8 +48,15 @@ export class CreateNewQrDialogComponent implements OnInit {
   createQrLink(type: string, sessionName: string, valid: string, documentIds: string[]) {
     console.log(type, sessionName, valid, documentIds);
     this.accountService.createQrLink(type, sessionName, parseInt(valid), documentIds).subscribe((data: any) => {
-      this.utilsService.successSnackBar("Qr link created successfully");
-      this.bottomSheetRef.dismiss();
-    });
+        this.utilsService.successSnackBar("Qr link created successfully");
+        this.copyLink = 'http://qray.s3-website.ap-south-1.amazonaws.com/access/' + data.token;
+      },
+      (error: any) => {
+        this.utilsService.errorSnackBar(error.error);
+      },
+      () => {
+        this.stepper.selectedIndex = 3;
+        this.backendResponseReceived = true;
+      });
   }
 }

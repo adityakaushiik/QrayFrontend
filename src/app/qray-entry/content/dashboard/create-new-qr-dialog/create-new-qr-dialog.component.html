@@ -49,6 +49,24 @@
       </button>
     </div>
   </mat-step>
+
+  <mat-step [hidden]="!backendResponseReceived">
+    <ng-template matStepLabel>Share Link</ng-template>
+
+    <div style="display: flex;flex-direction: row;align-items: baseline;justify-content: space-between;">
+      <mat-form-field class="example-full-width" style="width: 100%;">
+        <mat-label>Link</mat-label>
+        <input #link disabled matInput value="{{copyLink}}">
+      </mat-form-field>
+
+      <button (click)="copyToClipboard(true)" [cdkCopyToClipboard]="this.copyLink"
+              class="copyImgBtn" mat-mini-fab matTooltip="{{copied ? 'copied' : 'copy'}}">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+
+    <button (click)="this.bottomSheetRef.dismiss()" mat-raised-button>Done</button>
+  </mat-step>
 </mat-stepper>
 
 
