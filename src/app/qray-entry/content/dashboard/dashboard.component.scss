@@ -123,13 +123,16 @@ $breakpoint-large: 1200px;
     cursor: pointer;
   }
 
-  button:hover {
+  //
+  //button:hover {
+  //}
 
-    //background-color: #dadada;
+  .share-btn:hover {
+    background-color: #a6a6a6 !important;
 
-    //box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
-
-    //box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+    mat-icon {
+      color: white !important;
+    }
   }
 
   .delete-btn:hover {
@@ -149,6 +152,8 @@ $breakpoint-large: 1200px;
 
   .left-container {
     width: 100%;
+    overflow: scroll;
+    padding: 10px 0px;
 
     .chips {
       width: 100%;
@@ -160,10 +165,9 @@ $breakpoint-large: 1200px;
     width: 100%;
 
     .show-card-details {
-      margin: 2%;
       border-radius: 5px;
-      padding: 5% 2%;
-      height: 92%;
+      padding: 2%;
+      height: 98%;
     }
 
     .mat-mdc-card {

@@ -1,7 +1,8 @@
 <div class="login-component">
   <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Qray Login</mat-card-title>
+    <mat-card-header style="justify-content: center">
+      <img alt="Qray" class="logo" src="assets/QrayLogo.png">
+      <!--      <mat-card-title>Qray Login</mat-card-title>-->
     </mat-card-header>
     <mat-card-content>
       <div [formGroup]="form" class="login-container">
@@ -11,7 +12,7 @@
           <mat-error *ngIf="this.form.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="login-password-field">
           <mat-label>Enter your password</mat-label>
           <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
           <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
@@ -23,7 +24,8 @@
       </div>
     </mat-card-content>
     <mat-card-actions style="display: flex; justify-content: space-between">
-      <button (click)="login()" [disabled]="this.form.controls['email'].invalid" color="primary" mat-raised-button>
+      <button (click)="login()" [disabled]="this.form.controls['email'].invalid" color="primary"
+              mat-raised-button>
         <mat-spinner *ngIf="loading" class="spinner" diameter="20"></mat-spinner>
         <span *ngIf="!loading">Login</span>
       </button>

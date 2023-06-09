@@ -22,6 +22,7 @@ export class AttendersDetailsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'date', 'email', 'actions'];
   data: AttendersInfo[] = [];
   showQr = false;
+  qrScanDetails: string = '';
 
   constructor(@Inject(MAT_DIALOG_DATA) public attendance: AttendanceInfo,
               private dialog: MatDialog,
@@ -63,10 +64,7 @@ export class AttendersDetailsComponent implements OnInit {
     pdfMake.createPdf(documentDefinition).download('attendance_details.pdf');
   }
 
-  createQRCode(text: string) {
-    // this.dialog.open(QrCodeComponent, {
-    //   data: text,
-    // });
+  createQRCode() {
     this.showQr = !this.showQr;
   }
 
@@ -84,7 +82,26 @@ export class AttendersDetailsComponent implements OnInit {
   }
 
   refresh() {
-    this.ngOnInit();
+    this.getAttendersListing();
+  }
+
+  getAttendersListing() {
+    this.utilsService.showLoading();
+    this.accountService.getAttendanceListing(this.attendance.id).subscribe((res: any) => {
+      if ([...res].length - this.data.length > 0) {
+        this.utilsService.successSnackBar([...res].length - this.data.length + ' New Users Added Successfully');
+      }
+      this.data = [...res];
+      this.utilsService.hideLoading();
+
+      this.qrScanDetails = JSON.stringify({
+        uid: this.accountService.userValue.uid,
+        attendanceId: this.attendance.id,
+      });
+    }, (err) => {
+      console.log(err);
+      this.utilsService.hideLoading();
+    });
   }
 
   ngOnInit(): void {
@@ -92,17 +109,22 @@ export class AttendersDetailsComponent implements OnInit {
     this.accountService.getAttendanceListing(this.attendance.id).subscribe((res: any) => {
       this.data = [...res];
       this.utilsService.hideLoading();
+
+      this.qrScanDetails = JSON.stringify({
+        uid: this.accountService.userValue.uid,
+        attendanceId: this.attendance.id,
+      });
     }, (err) => {
       console.log(err);
       this.utilsService.hideLoading();
     });
-
-    // this.webSocketService.connectToWebSocket();
-    //
-    // this.webSocketService.listenForAttendanceChanges().subscribe((attendance: any) => {
-    //   // Handle the attendance change event
-    //   // Update attendance log or refresh necessary data
-    //   console.log('Attendance change event received:', attendance);
-    // });
   }
 }
+
+// this.webSocketService.connectToWebSocket();
+//
+// this.webSocketService.listenForAttendanceChanges().subscribe((attendance: any) => {
+//   // Handle the attendance change event
+//   // Update attendance log or refresh necessary data
+//   console.log('Attendance change event received:', attendance);
+// });

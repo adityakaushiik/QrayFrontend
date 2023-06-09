@@ -107,9 +107,25 @@
           <button (click)="viewDocument(document)" mat-mini-fab matTooltip="View Document">
             <mat-icon color="primary">visibility</mat-icon>
           </button>
-          <button mat-mini-fab matTooltip="Edit Document Details">
-            <mat-icon color="primary">edit</mat-icon>
+          <!--          <button mat-mini-fab matTooltip="Edit Document Details">-->
+          <!--            <mat-icon color="primary">edit</mat-icon>-->
+          <!--          </button>-->
+
+          <button [matMenuTriggerFor]="menu" mat-mini-fab>
+            <mat-icon>
+              more_vert
+            </mat-icon>
           </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon color="primary">edit</mat-icon>
+              Edit
+            </button>
+            <button mat-menu-item>
+              <mat-icon color="warn">delete</mat-icon>
+              Delete
+            </button>
+          </mat-menu>
         </div>
       </mat-card>
 

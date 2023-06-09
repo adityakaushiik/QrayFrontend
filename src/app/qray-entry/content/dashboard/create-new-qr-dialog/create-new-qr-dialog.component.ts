@@ -4,6 +4,7 @@ import {UtilsService} from "../../../../services/utils.service";
 import {AccountService} from "../../../../services/account.service";
 import {DocumentInfo} from "../../../../models/DocumentInfo";
 import {MatStepper} from "@angular/material/stepper";
+import * as QRCode from "qrcode";
 
 @Component({
   selector: 'app-create-new-qr-dialog',
@@ -50,6 +51,7 @@ export class CreateNewQrDialogComponent implements OnInit {
     this.accountService.createQrLink(type, sessionName, parseInt(valid), documentIds).subscribe((data: any) => {
         this.utilsService.successSnackBar("Qr link created successfully");
         this.copyLink = 'http://qray.s3-website.ap-south-1.amazonaws.com/access/' + data.token;
+        this.generateQRCode(this.copyLink);
       },
       (error: any) => {
         this.utilsService.errorSnackBar(error.error);
@@ -58,5 +60,17 @@ export class CreateNewQrDialogComponent implements OnInit {
         this.stepper.selectedIndex = 3;
         this.backendResponseReceived = true;
       });
+  }
+
+  generateQRCode(text: string) {
+    if (text === '') {
+      return;
+    }
+    const canvas = document.getElementById('qrcodeCanvas') as HTMLCanvasElement;
+    QRCode.toCanvas(canvas, text, {width: 200}, function (error) {
+      if (error) {
+        console.error('Error generating QR code:', error);
+      }
+    });
   }
 }

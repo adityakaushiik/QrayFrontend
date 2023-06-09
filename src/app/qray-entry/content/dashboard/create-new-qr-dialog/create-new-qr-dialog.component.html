@@ -39,20 +39,17 @@
 
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button (click)="createQrLink(
-        type.value,
-        name.value,
-        time.value,
-        this.documents
-      )" [disabled]="time.value=='' || name.value=='' || this.documents.length==0" color="accent" mat-raised-button
-              matStepperNext>Submit
+      <button (click)="createQrLink(type.value,name.value,time.value,this.documents)"
+              [disabled]="time.value=='' || name.value=='' || this.documents.length==0" color="accent"
+              mat-raised-button>
+        Submit
       </button>
     </div>
   </mat-step>
 
   <mat-step [hidden]="!backendResponseReceived">
     <ng-template matStepLabel>Share Link</ng-template>
-
+    <canvas id="qrcodeCanvas"></canvas>
     <div style="display: flex;flex-direction: row;align-items: baseline;justify-content: space-between;">
       <mat-form-field class="example-full-width" style="width: 100%;">
         <mat-label>Link</mat-label>

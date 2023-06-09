@@ -29,6 +29,8 @@ import {
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
+import {MatMenuModule} from "@angular/material/menu";
 // import {WebSocketService} from "./services/web-socket.service";
 
 // export const environment = {
@@ -75,6 +77,8 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
     MatStepperModule,
     MatProgressSpinnerModule,
     ClipboardModule,
+    CdkVirtualScrollableElement,
+    MatMenuModule,
     // SocketIoModule.forRoot(config)
   ],
   // WebSocketService
