@@ -62,7 +62,7 @@ export class AccessInformationComponent implements OnInit {
       console.log('token is null');
       return;
     }
-    this.http.post('http://43.205.195.167:8080/api/qrLink/access', deviceInfo, {
+    this.http.post<any>('http://localhost:8080/api/qrLink/access', deviceInfo, {
       params: {
         token: this.token,
       }

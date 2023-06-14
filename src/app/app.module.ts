@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "./utils/material.module";
+import {MaterialModule} from "./material-module/material.module";
 import {DashboardComponent} from './qray-entry/content/dashboard/dashboard.component';
 import {SignupComponent} from './signup/signup.component';
 import {QrayEntryComponent} from './qray-entry/qray-entry.component';
@@ -31,6 +31,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 import {MatMenuModule} from "@angular/material/menu";
+import { ConfirmDialogComponent } from './utils/confirm-dialog/confirm-dialog.component';
 // import {WebSocketService} from "./services/web-socket.service";
 
 // export const environment = {
@@ -63,7 +64,8 @@ import {MatMenuModule} from "@angular/material/menu";
     AddDocumentComponent,
     AccessInformationComponent,
     DocumentViewComponent,
-    CreateNewQrDialogComponent
+    CreateNewQrDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,

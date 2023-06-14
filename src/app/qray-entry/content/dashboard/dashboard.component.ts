@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UtilsService} from "../../../services/utils.service";
+import {UtilsService} from "../../../utils/utils.service";
 import {AccountService} from "../../../services/account.service";
 import {QrLinkGet} from "../../../models/QrLinkGet";
 import {MatDialog} from "@angular/material/dialog";
@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
     sessionName: '',
     sessionType: '',
     sessionValidTime: '',
+    token: '',
   }
   qrDetails: QrLinkGet = this.dummyData;
 
@@ -89,5 +90,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
+  shareQrLink(qrData: QrLinkGet) {
+    window.open('http://qray.s3-website.ap-south-1.amazonaws.com/access/' + qrData.token, '_blank');
+  }
 }

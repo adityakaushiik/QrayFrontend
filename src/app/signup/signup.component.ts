@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AccountService} from "../services/account.service";
 import {Router} from "@angular/router";
-import {UtilsService} from "../services/utils.service";
+import {UtilsService} from "../utils/utils.service";
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +13,10 @@ export class SignupComponent {
   hide = true;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router, private utilsService: UtilsService) {
+  constructor(private fb: FormBuilder,
+              private accountService: AccountService,
+              private router: Router,
+              private utilsService: UtilsService) {
     this.form = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),

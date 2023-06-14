@@ -4,10 +4,10 @@
   <mat-tab label="Basic Info">
     <div class="basic-details-tab">
       <div class="edit-add-buttons">
-        <button (click)="editBasicDetails = !editBasicDetails" mat-mini-fab matTooltip="Edit your Details">
+        <button (click)="editBasicDetails.next(!bool)" mat-mini-fab matTooltip="Edit your Details">
           <mat-icon color="primary">edit</mat-icon>
         </button>
-        <button (click)="saveBasicDetails()" *ngIf="!editBasicDetails" id="saveBtn" mat-mini-fab
+        <button (click)="saveBasicDetails()" *ngIf="bool" id="saveBtn" mat-mini-fab
                 matTooltip="Save Details">
           <mat-icon color="primary">save</mat-icon>
         </button>
@@ -19,10 +19,10 @@
 
       <div class="entire-form">
         <div class="detail+image">
-          <form class="example-form">
+          <form [formGroup]="form" class="example-form">
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input disabled matInput value="{{basicDetails.email}}">
+              <input formControlName="email" matInput>
             </mat-form-field>
 
             <table cellspacing="0" class="example-full-width">
@@ -30,22 +30,21 @@
                 <td>
                   <mat-form-field class="example-full-width">
                     <mat-label>First name</mat-label>
-                    <input [disabled]="editBasicDetails" matInput value="{{basicDetails.firstName}}">
+                    <input formControlName="firstName" matInput>
                   </mat-form-field>
                 </td>
                 <td>
                   <mat-form-field class="example-full-width">
                     <mat-label>Last Name</mat-label>
-                    <input [disabled]="editBasicDetails" matInput value="{{basicDetails.lastName}}">
+                    <input formControlName="lastName" matInput>
                   </mat-form-field>
                 </td>
               </tr>
             </table>
 
-
             <mat-form-field class="example-full-width">
               <mat-label>Phone Number</mat-label>
-              <input [disabled]="editBasicDetails" matInput value="{{basicDetails.phoneNumber}}">
+              <input formControlName="phoneNumber" matInput>
             </mat-form-field>
 
 
@@ -54,15 +53,15 @@
                 <td>
                   <mat-form-field class="example-full-width">
                     <mat-label>Country</mat-label>
-                    <input [disabled]="editBasicDetails" matInput placeholder="Ex. San Francisco"
-                           value="{{basicDetails.country}}">
+                    <input formControlName="country" matInput
+                           placeholder="Ex. San Francisco">
                   </mat-form-field>
                 </td>
                 <td>
                   <mat-form-field class="example-full-width">
                     <mat-label>State</mat-label>
-                    <input [disabled]="editBasicDetails" matInput placeholder="Ex. California"
-                           value="{{basicDetails.state}}">
+                    <input formControlName="state" matInput
+                           placeholder="Ex. California">
                   </mat-form-field>
                 </td>
               </tr>
@@ -74,20 +73,54 @@
           </div>
         </div>
 
-        <p>
-          <mat-form-field class="example-full-width">
-            <mat-label>Address</mat-label>
-            <textarea [disabled]="editBasicDetails" matInput
-                      placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Address 2</mat-label>
-            <textarea [disabled]="editBasicDetails" matInput></textarea>
-          </mat-form-field>
-        </p>
+        <!--        <div class="address-fields">-->
+        <!--          <mat-form-field class="example-full-width">-->
+        <!--            <mat-label>Address</mat-label>-->
+        <!--            <textarea matInput-->
+        <!--                      placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>-->
+        <!--          </mat-form-field>-->
+        <!--          <mat-form-field class="example-full-width">-->
+        <!--            <mat-label>Address 2</mat-label>-->
+        <!--            <textarea matInput></textarea>-->
+        <!--          </mat-form-field>-->
+        <!--        </div>-->
       </div>
     </div>
   </mat-tab>
+
+
+  <!--  <div [formGroup]="form" class="login-container">-->
+  <!--    <mat-form-field appearance="fill" class="login-email-field">-->
+  <!--      <mat-label>Enter your email</mat-label>-->
+  <!--      <input formControlName="email" matInput placeholder="abcd@example.com" required>-->
+  <!--      <mat-error *ngIf="this.form.controls['email'].invalid">{{getErrorMessage()}}</mat-error>-->
+  <!--    </mat-form-field>-->
+
+  <!--    <mat-form-field appearance="fill">-->
+  <!--      <mat-label>Enter your password</mat-label>-->
+  <!--      <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput>-->
+  <!--      <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button-->
+  <!--              matSuffix>-->
+  <!--        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+  <!--      </button>-->
+  <!--    </mat-form-field>-->
+
+  <!--    <mat-form-field>-->
+  <!--      <input formControlName="firstName" matInput placeholder="First Name" required type="text">-->
+  <!--    </mat-form-field>-->
+  <!--    <mat-form-field>-->
+  <!--      <input formControlName="lastName" matInput placeholder="Last Name" required type="text">-->
+  <!--    </mat-form-field>-->
+  <!--    <mat-form-field>-->
+  <!--      <input formControlName="phone" matInput placeholder="Phone Number" required type="number">-->
+  <!--    </mat-form-field>-->
+  <!--    <mat-form-field>-->
+  <!--      <input formControlName="state" matInput placeholder="State" required type="text">-->
+  <!--    </mat-form-field>-->
+  <!--    <mat-form-field>-->
+  <!--      <input formControlName="country" matInput placeholder="Country" required type="text">-->
+  <!--    </mat-form-field>-->
+  <!--  </div>-->
 
 
   <mat-tab label="Documents">
@@ -121,7 +154,7 @@
               <mat-icon color="primary">edit</mat-icon>
               Edit
             </button>
-            <button mat-menu-item>
+            <button (click)="deleteDocument(document)" mat-menu-item>
               <mat-icon color="warn">delete</mat-icon>
               Delete
             </button>
@@ -141,5 +174,5 @@
   </mat-tab>
 
 
-  <mat-tab label="Bank Details">Bank Details</mat-tab>
+  <!--  <mat-tab label="Bank Details">Bank Details</mat-tab>-->
 </mat-tab-group>

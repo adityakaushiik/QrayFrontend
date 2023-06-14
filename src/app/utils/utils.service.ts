@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {BehaviorSubject} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmDialogComponent} from "./confirm-dialog/confirm-dialog.component";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ export class UtilsService {
   private loadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isLoading = this.loadingSubject.asObservable();
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar,
+              private dialog: MatDialog) {
   }
 
   showLoading() {
@@ -48,6 +51,15 @@ export class UtilsService {
       horizontalPosition: 'right',
       verticalPosition: 'bottom',
       duration: duration ? duration : 3000,
+    });
+  }
+
+  confirmDialog(message: string, callback: () => void) {
+    this.dialog.open(ConfirmDialogComponent, {
+      data: message,
+      autoFocus: false,
+    }).afterClosed().subscribe(result => {
+      if (result) callback();
     });
   }
 }

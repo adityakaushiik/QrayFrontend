@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from "../../../services/account.service";
-import {UtilsService} from "../../../services/utils.service";
+import {UtilsService} from "../../../utils/utils.service";
 import {AttendanceInfo} from "../../../models/AttendanceInfo";
 import {AttendersInfo} from "../../../models/AttendersInfo";
 import {MatDialog} from "@angular/material/dialog";

@@ -13,6 +13,7 @@ export class AccountService {
   public userSubject: BehaviorSubject<LoginResponse>;
 
   // private baseUrl = 'http://43.205.195.167:8080/api/';
+
   private baseUrl = 'http://localhost:8080/api/';
 
   constructor(private router: Router, private http: HttpClient) {
@@ -73,14 +74,20 @@ export class AccountService {
   }
 
   public getUserBasicDetails() {
-    return this.http.get<any>(this.baseUrl + 'documents/userDetails', {
+    return this.http.get<any>(this.baseUrl + 'user/userDetails', {
       headers: this.header
     });
   }
 
-  public deleteDocument(documentId: string, documentReference: string) {
-    return this.http.delete(this.baseUrl + 'documents', {
-      params: {documentId: documentId, documentReference: documentReference},
+  public updateUserBasicDetails(data: Map<string, string>) {
+    return this.http.put(this.baseUrl + 'user/updateUserDetails', data, {
+      headers: this.header
+    });
+  }
+
+  public deleteDocument(documentId: string | undefined, documentReference: string) {
+    return this.http.delete(this.baseUrl + 'documents/delete', {
+      params: {documentId: (documentId) ? documentId : 'asfbaksfj', documentReference: documentReference},
       headers: this.header
     });
   }

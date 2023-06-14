@@ -5,7 +5,7 @@ import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import {TDocumentDefinitions} from "pdfmake/interfaces";
 import {AttendanceInfo} from "../../../../models/AttendanceInfo";
-import {UtilsService} from "../../../../services/utils.service";
+import {UtilsService} from "../../../../utils/utils.service";
 import {AccountService} from "../../../../services/account.service";
 // import {WebSocketService} from "../../../../services/web-socket.service";
 

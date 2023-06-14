@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatBottomSheetRef} from "@angular/material/bottom-sheet";
-import {UtilsService} from "../../../../services/utils.service";
+import {UtilsService} from "../../../../utils/utils.service";
 import {AccountService} from "../../../../services/account.service";
 import {DocumentInfo} from "../../../../models/DocumentInfo";
 import {MatStepper} from "@angular/material/stepper";

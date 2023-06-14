@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AccountService} from "../../../../services/account.service";
 import {MatDialogRef} from "@angular/material/dialog";
-import {UtilsService} from "../../../../services/utils.service";
+import {UtilsService} from "../../../../utils/utils.service";
 
 @Component({
   selector: 'app-add-document',

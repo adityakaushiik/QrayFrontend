@@ -27,6 +27,10 @@ body {
   flex-wrap: wrap;
 }
 
+.results:last-child {
+  margin-bottom: 20px;
+}
+
 .card {
   margin: 10px;
   width: 300px;

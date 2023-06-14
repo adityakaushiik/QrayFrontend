@@ -11,4 +11,5 @@ export interface QrLinkGet {
   sessionName: string,
   sessionType: string,
   sessionValidTime: string,
+  token: string,
 }
