@@ -33,12 +33,27 @@ export class DashboardComponent implements OnInit {
               private bottomSheet: MatBottomSheet) {
   }
 
+  get isMobile(): boolean {
+    return this.utilsService.isMobile;
+  }
+
   ngOnInit(): void {
     this.accountService.getQrLinksListing().subscribe((data: any) => {
       this.qrData = data;
       console.log(this.qrData);
+    }, error => {
+      if (error.status == 401) {
+        this.utilsService.errorSnackBar("Unauthorized , Please login again.");
+        this.accountService.logout();
+      }
     });
   }
+
+
+  // showQrLinkDetails(qrLink: QrLinkGet) {
+  //   if (this.utilsService.isMobile)
+  //     this.dialog.open()
+  // }
 
   getLastSeen(lastSeen: string): string {
     if (lastSeen == null) {
@@ -48,11 +63,6 @@ export class DashboardComponent implements OnInit {
     let now = new Date();
     let diff = now.getTime() - date.getTime();
     return "Last seen " + Math.floor(diff / (1000 * 60 * 60)) + " minutes ago";
-  }
-
-
-  showQrLinkDetails(qrLink: QrLinkGet) {
-
   }
 
   viewDocument(documentRef: string) {
@@ -91,6 +101,6 @@ export class DashboardComponent implements OnInit {
   }
 
   shareQrLink(qrData: QrLinkGet) {
-    window.open('http://qray.s3-website.ap-south-1.amazonaws.com/access/' + qrData.token, '_blank');
+    window.open(this.accountService.accessUrl + qrData.token, '_blank');
   }
 }

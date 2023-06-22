@@ -3,18 +3,16 @@ import {BehaviorSubject, map, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginResponse} from "../models/LoginResponse";
+import {accessUrl, baseUrl} from "../endpoints";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-
   public user: Observable<LoginResponse>;
   public userSubject: BehaviorSubject<LoginResponse>;
-
-  // private baseUrl = 'http://43.205.195.167:8080/api/';
-
-  private baseUrl = 'http://localhost:8080/api/';
+  public accessUrl = accessUrl;
+  private baseUrl = baseUrl;
 
   constructor(private router: Router, private http: HttpClient) {
     this.userSubject = new BehaviorSubject<LoginResponse>(JSON.parse(
@@ -73,9 +71,10 @@ export class AccountService {
     this.router.navigate(['/login']);
   }
 
-  public getUserBasicDetails() {
+  public getUserBasicDetails(attendersId?: string | null) {
     return this.http.get<any>(this.baseUrl + 'user/userDetails', {
-      headers: this.header
+      headers: this.header,
+      params: {userId: (attendersId) ? attendersId : 0}
     });
   }
 

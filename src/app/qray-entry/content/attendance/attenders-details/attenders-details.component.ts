@@ -119,6 +119,10 @@ export class AttendersDetailsComponent implements OnInit {
       this.utilsService.hideLoading();
     });
   }
+
+  showDetailsBottomSheet(userId: string) {
+    this.utilsService.openUserBottomSheet(userId);
+  }
 }
 
 // this.webSocketService.connectToWebSocket();

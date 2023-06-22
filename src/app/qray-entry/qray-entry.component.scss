@@ -2,15 +2,25 @@
 //  box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25) !important;
 //}
 
+@media screen and (max-width: 800px) {
+  .main-container {
+    height: 162.6vw !important;
+  }
+  .sideNav {
+    width: 70% !important;
+  }
+}
+
 .main-container {
-  height: 93.1%;
+  height: 76.6vw;
+
 
   .sideNav {
     width: 20%;
   }
 
-  .content {
-    height: 100%;
-    margin: 2%
-  }
+  //.content {
+  //  height: 100%;
+  //  overflow-y: scroll !important;
+  //}
 }

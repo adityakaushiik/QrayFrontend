@@ -1,14 +1,13 @@
-<app-navbar (toggleSidenav)="drawer.toggle()"></app-navbar>
+<div style="height: 100vh; display: flex; flex-direction: column">
+  <app-navbar (toggleSidenav)="drawer.toggle()"></app-navbar>
+  <mat-drawer-container [hasBackdrop]="isMobile" class="main-container" style="flex: 1;">
+    <mat-drawer #drawer [mode]="mode" class="sideNav">
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
 
-<mat-drawer-container [hasBackdrop]="false" class="main-container">
-
-  <mat-drawer #drawer [mode]="'side'" class="sideNav">
-    <app-sidenav></app-sidenav>
-  </mat-drawer>
-
-  <mat-drawer-content class="content">
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-
-</mat-drawer-container>
+    <mat-drawer-content class="content">
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
 

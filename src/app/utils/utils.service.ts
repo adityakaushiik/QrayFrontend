@@ -3,16 +3,24 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {BehaviorSubject} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmDialogComponent} from "./confirm-dialog/confirm-dialog.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {UserDetailBottomSheetComponent} from "./user-detail-bottom-sheet/user-detail-bottom-sheet.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
+  width = screen.width;
   private loadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isLoading = this.loadingSubject.asObservable();
 
   constructor(private snackBar: MatSnackBar,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private bottomSheet: MatBottomSheet) {
+  }
+
+  get isMobile(): boolean {
+    return this.width < 768;
   }
 
   showLoading() {
@@ -60,6 +68,12 @@ export class UtilsService {
       autoFocus: false,
     }).afterClosed().subscribe(result => {
       if (result) callback();
+    });
+  }
+
+  openUserBottomSheet(uid: string) {
+    this.bottomSheet.open(UserDetailBottomSheetComponent, {
+      data: uid,
     });
   }
 }

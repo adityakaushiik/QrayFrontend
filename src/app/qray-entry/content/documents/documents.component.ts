@@ -18,8 +18,8 @@ export class DocumentsComponent implements OnInit, OnDestroy {
   basicDetails: BasicDetails = new BasicDetails('', '', '', '', '', '');
   documents: DocumentInfo[] = [];
   form: FormGroup;
-  subscription: Subscription = new Subscription();
   bool: boolean = false;
+  subscription: Subscription = new Subscription();
   editBasicDetails: Subject<boolean> = new Subject<boolean>();
 
   constructor(private accountService: AccountService,

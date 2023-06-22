@@ -5,10 +5,10 @@
   <table [dataSource]="data" class="mat-elevation-z8 demo-table" mat-table>
     <!-- Date Column -->
     <ng-container matColumnDef="id">
-      <th *matHeaderCellDef id="reimbursementHistoryDate" mat-header-cell>Id</th>
-      <td *matCellDef="let element" mat-cell>
+      <th *matHeaderCellDef id="reimbursementHistoryDate" mat-header-cell>S.no</th>
+      <td *matCellDef="let element ; let i = index" mat-cell>
         <div class="form-group">
-          {{element.attendersId}}
+          {{i + 1}}
         </div>
       </td>
       <td *matFooterCellDef mat-footer-cell></td>
@@ -51,23 +51,25 @@
       <td *matFooterCellDef class="footerCell" mat-footer-cell></td>
     </ng-container>
 
-    <ng-container id="reimbusementHistoryActionsColumn" matColumnDef="actions">
-      <th *matHeaderCellDef id="historyActions" mat-header-cell>
-        <button (click)="generatePDF()" mat-icon-button matTooltip="Export as pdf">
-          <mat-icon>save_alt</mat-icon>
-        </button>
-        <button (click)="createQRCode()" mat-icon-button matTooltip="add more attendees">
-          <mat-icon>add</mat-icon>
-        </button>
+    <ng-container class="ActionsColumn" matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell>
+        <div id="Actions">
+          <button (click)="generatePDF()" mat-icon-button matTooltip="Export as pdf">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+          <button (click)="createQRCode()" mat-icon-button matTooltip="add more attendees">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
       </th>
       <td *matCellDef="let element" mat-cell>
-        <div id="historyActionsBody">
+        <div id="ActionsBody">
           <button (click)="deleteAttendanceRecord(element.recordId)" mat-icon-button matTooltip="Delete Record">
             <mat-icon color="warn">delete_forever</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Edit">
-            <mat-icon color="primary">edit</mat-icon>
-          </button>
+          <!--          <button mat-icon-button matTooltip="Edit">-->
+          <!--            <mat-icon color="primary">edit</mat-icon>-->
+          <!--          </button>-->
         </div>
       </td>
       <td *matFooterCellDef mat-footer-cell>
@@ -75,7 +77,9 @@
     </ng-container>
 
     <tr *matHeaderRowDef="displayedColumns" id="reimbursementHistoryHeader" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns;let i = index" id="attendance-details-row" mat-row></tr>
+    <tr (click)="showDetailsBottomSheet(element.attendersId)"
+        *matRowDef="let element ; let row; columns: displayedColumns;let i = index" id="attendance-details-row"
+        mat-row></tr>
     <tr *matFooterRowDef="displayedColumns" id="reimbursementHistoryFooter" mat-footer-row>
     </tr>
   </table>

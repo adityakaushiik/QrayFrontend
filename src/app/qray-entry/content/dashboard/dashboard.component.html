@@ -16,8 +16,9 @@
     </mat-chip-listbox>
 
     <div class="results">
-      <div (mouseenter)="qrDetails=data" *ngFor="let data of qrData" class="hover card dashboard-example-card">
-        <mat-card class="card-class" matTooltip="{{getLastSeen(data.lastSeen)}}" matTooltipPosition="right">
+      <div (click)="qrDetails=data" *ngFor="let data of qrData"
+           class="hover card dashboard-example-card animate__animated animate__fadeIn">
+        <mat-card class="card-class">
           <div class="card-content-container">
             <mat-card-header>
               <mat-card-title>{{data.sessionName}}</mat-card-title>
@@ -46,7 +47,8 @@
   </div>
 
 
-  <div *ngIf="qrDetails!=dummyData" class="right-container">
+  <div *ngIf="qrDetails!=dummyData" [class.qr-info-custom-hover]="isMobile"
+       class="right-container animate__animated animate__fadeIn">
     <mat-card class="show-card-details">
       <mat-card-header style="display: flex ; justify-content: flex-end">
         <a (click)="qrDetails=dummyData" class="cancel-btn">
@@ -55,11 +57,16 @@
       </mat-card-header>
       <mat-card-content>
         <div class="document-info">
-          <mat-card-title>Documents</mat-card-title>
+          <mat-card-title class="text-icon">
+            <mat-icon>
+              perm_media
+            </mat-icon>
+            Documents
+          </mat-card-title>
           <mat-divider></mat-divider>
 
-          <div *ngFor="let doc of qrDetails.documents" class="hover document-item">
-            <mat-card>
+          <div *ngFor="let doc of qrDetails.documents" class="document-item">
+            <mat-card class="hover">
               <div class="body">
                 <div class="inner">
                   <mat-icon>description</mat-icon>
@@ -73,11 +80,17 @@
           </div>
         </div>
 
+
         <div class="device-info">
-          <mat-card-title>Devices</mat-card-title>
+          <mat-card-title class="text-icon">
+            <mat-icon>
+              important_devices
+            </mat-icon>
+            Devices
+          </mat-card-title>
           <mat-divider></mat-divider>
-          <div *ngFor="let device of qrDetails.deviceList" class="hover device-item">
-            <mat-card>
+          <div *ngFor="let device of qrDetails.deviceList" class="device-item">
+            <mat-card class="hover">
               <div class="body">
                 <mat-icon *ngIf="device.deviceType == 'Desktop'">computer</mat-icon>
                 <mat-icon *ngIf="device.deviceType == 'Mobile'">phone_iphone</mat-icon>

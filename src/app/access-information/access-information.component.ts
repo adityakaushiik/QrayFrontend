@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {DocumentInfo} from "../models/DocumentInfo";
 import {DeviceInfo} from "../models/DeviceInfo";
+import {baseUrl, ipAddressApiUrl} from "../endpoints";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class AccessInformationComponent implements OnInit {
   token: string | null = '';
   allInfoReceived = false;
   documents: DocumentInfo[] = [];
+  private baseUrl = baseUrl;
 
   constructor(private router: Router,
               private http: HttpClient,
@@ -32,7 +34,7 @@ export class AccessInformationComponent implements OnInit {
   }
 
   getIPAddress() {
-    return this.http.get('https://api64.ipify.org?format=json');
+    return this.http.get(ipAddressApiUrl);
   }
 
   retrieveDeviceInformationAndIP() {
@@ -62,7 +64,7 @@ export class AccessInformationComponent implements OnInit {
       console.log('token is null');
       return;
     }
-    this.http.post<any>('http://localhost:8080/api/qrLink/access', deviceInfo, {
+    this.http.post<any>(this.baseUrl + 'qrLink/access', deviceInfo, {
       params: {
         token: this.token,
       }

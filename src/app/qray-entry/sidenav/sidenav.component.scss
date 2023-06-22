@@ -1,4 +1,11 @@
-.nav-list {
+.text-icon {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.text-icon:hover {
+  background-color: #efefef;
+  cursor: pointer;
 }
 
 .mdc-list-item:focus .mdc-list-item__primary-text {

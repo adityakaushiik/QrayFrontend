@@ -1,5 +1,16 @@
 <mat-nav-list class="nav-list">
-  <a class="a" mat-list-item routerLink="">Dashboard</a>
-  <a class="a" mat-list-item routerLink="documents">Documents</a>
-  <a class="a" mat-list-item routerLink="attendance">Attendance</a>
+  <div class="text-icon" mat-list-item routerLink="">
+    <mat-icon>dashboard</mat-icon>
+    <mat-card-title> Dashboard</mat-card-title>
+  </div>
+  <div class="text-icon" mat-list-item routerLink="documents">
+    <mat-icon>
+      perm_media
+    </mat-icon>
+    <mat-card-title>Documents</mat-card-title>
+  </div>
+  <div class="text-icon" mat-list-item routerLink="attendance">
+    <mat-icon>assignment_ind</mat-icon>
+    <mat-card-title>Attendance</mat-card-title>
+  </div>
 </mat-nav-list>

@@ -43,8 +43,9 @@ export class AttendanceComponent implements OnInit {
   showAttenders(attendance: AttendanceInfo) {
     this.dialog.open(AttendersDetailsComponent, {
       data: attendance,
-      width: '80%',
-      height: '80%'
+      width: '98vw',
+      maxWidth: '98vw',
+      height: '80vh',
     });
   }
 

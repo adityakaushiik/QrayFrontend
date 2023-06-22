@@ -1,5 +1,5 @@
 <div class="login-component">
-  <mat-card class="login-card">
+  <mat-card class="login-card animate__animated animate__zoomIn">
     <mat-card-header style="justify-content: center">
       <img alt="Qray" class="logo" src="assets/QrayLogo.png">
       <!--      <mat-card-title>Qray Login</mat-card-title>-->
@@ -8,13 +8,13 @@
       <div [formGroup]="form" class="login-container">
         <mat-form-field appearance="fill" class="login-email-field">
           <mat-label>Enter your email</mat-label>
-          <input formControlName="email" matInput placeholder="abcd@example.com" required>
+          <input (keyup.enter)="login()" formControlName="email" matInput placeholder="abcd@example.com" required>
           <mat-error *ngIf="this.form.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="login-password-field">
           <mat-label>Enter your password</mat-label>
-          <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
+          <input (keyup.enter)="login()" [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
           <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
                   matSuffix>
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

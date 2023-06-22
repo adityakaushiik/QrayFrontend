@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-qray-entry',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./qray-entry.component.scss']
 })
 export class QrayEntryComponent {
+  width = screen.width;
 
+  get isMobile(): boolean {
+    // console.log(this.width < 800);
+    return this.width < 800;
+  }
+
+  get mode() {
+    return this.width > 800 ? 'side' : 'over';
+  }
 }

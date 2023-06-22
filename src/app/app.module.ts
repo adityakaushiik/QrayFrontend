@@ -19,9 +19,7 @@ import {DocumentsComponent} from './qray-entry/content/documents/documents.compo
 import {AttendersDetailsComponent} from './qray-entry/content/attendance/attenders-details/attenders-details.component';
 import {QrCodeComponent} from './qray-entry/content/attendance/qr-code/qr-code.component';
 import {AddDocumentComponent} from './qray-entry/content/documents/add-document/add-document.component';
-import {AccessInformationComponent} from './access-information/access-information.component';
 import {CommonModule} from "@angular/common";
-import {DocumentViewComponent} from "./access-information/document-view/document-view.component";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {
   CreateNewQrDialogComponent
@@ -31,7 +29,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 import {MatMenuModule} from "@angular/material/menu";
-import { ConfirmDialogComponent } from './utils/confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent} from './utils/confirm-dialog/confirm-dialog.component';
+import { UserDetailBottomSheetComponent } from './utils/user-detail-bottom-sheet/user-detail-bottom-sheet.component';
 // import {WebSocketService} from "./services/web-socket.service";
 
 // export const environment = {
@@ -62,10 +61,9 @@ import { ConfirmDialogComponent } from './utils/confirm-dialog/confirm-dialog.co
     AttendersDetailsComponent,
     QrCodeComponent,
     AddDocumentComponent,
-    AccessInformationComponent,
-    DocumentViewComponent,
     CreateNewQrDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    UserDetailBottomSheetComponent
   ],
   imports: [
     CommonModule,

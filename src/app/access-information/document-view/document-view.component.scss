@@ -1,3 +1,22 @@
+$breakpoint-small: 767px;
+$breakpoint-medium: 991px;
+$breakpoint-large: 1200px;
+
+
+@media only screen and (max-width: $breakpoint-small) {
+  .actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .documentCard {
+    margin: 5px !important;
+    width: 300px !important;
+    justify-content: space-between;
+  }
+}
+
 .documentCard {
   color: white;
   background-color: #b7abce;

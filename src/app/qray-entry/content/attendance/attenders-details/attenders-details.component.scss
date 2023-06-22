@@ -1,5 +1,6 @@
 .attendanceTable {
   padding: 10px;
+  min-width: 700px;
 }
 
 #attendance-details-row:hover {
@@ -8,6 +9,18 @@
   transform: scale(1.01);
   box-shadow: 0px 0px 13px hsla(0, 0%, 40%, 0.75);
   cursor: pointer;
+}
+
+.ActionsColumn {
+  width: 7%;
+}
+
+#Actions, #ActionsBody {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 //td:hover {
