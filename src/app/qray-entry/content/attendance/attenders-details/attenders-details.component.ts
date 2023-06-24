@@ -32,6 +32,10 @@ export class AttendersDetailsComponent implements OnInit {
     // private webSocketService: WebSocketService
   }
 
+  get isMobile(): boolean {
+    return this.utilsService.isMobile;
+  }
+
   generatePDF() {
     if (this.attendance.totalAttenders === 0) {
       this.utilsService.warningSnackBar('No attenders found');

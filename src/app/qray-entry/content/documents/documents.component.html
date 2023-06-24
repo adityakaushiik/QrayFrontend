@@ -124,55 +124,55 @@
 
 
   <mat-tab label="Documents">
+    <div>
+      <div class="results">
+        <mat-card *ngFor="let document of documents" class="hover documentCard">
+          <div class="data">
+            <mat-card-header>
+              <mat-card-title>{{document.documentType}}</mat-card-title>
+              <mat-card-subtitle>{{document.documentId}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              {{document.documentReference}}
+            </mat-card-content>
+          </div>
+          <div class="actions">
+            <button (click)="viewDocument(document)" mat-mini-fab matTooltip="View Document">
+              <mat-icon color="primary">visibility</mat-icon>
+            </button>
+            <!--          <button mat-mini-fab matTooltip="Edit Document Details">-->
+            <!--            <mat-icon color="primary">edit</mat-icon>-->
+            <!--          </button>-->
 
-    <div class="results">
-      <mat-card *ngFor="let document of documents" class="hover documentCard">
-        <div class="data">
-          <mat-card-header>
-            <mat-card-title>{{document.documentType}}</mat-card-title>
-            <mat-card-subtitle>{{document.documentId}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            {{document.documentReference}}
+            <button [matMenuTriggerFor]="menu" mat-mini-fab>
+              <mat-icon>
+                more_vert
+              </mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon color="primary">edit</mat-icon>
+                Edit
+              </button>
+              <button (click)="deleteDocument(document)" mat-menu-item>
+                <mat-icon color="warn">delete</mat-icon>
+                Delete
+              </button>
+            </mat-menu>
+          </div>
+        </mat-card>
+
+        <mat-card (click)="addDocument()" class="hover documentCard add-btn">
+          <mat-card-content style="display: flex;flex-direction: column;align-items: center;">
+            <button disabled mat-fab>
+              <mat-icon>add</mat-icon>
+            </button>
+            <span>Add Document</span>
           </mat-card-content>
-        </div>
-        <div class="actions">
-          <button (click)="viewDocument(document)" mat-mini-fab matTooltip="View Document">
-            <mat-icon color="primary">visibility</mat-icon>
-          </button>
-          <!--          <button mat-mini-fab matTooltip="Edit Document Details">-->
-          <!--            <mat-icon color="primary">edit</mat-icon>-->
-          <!--          </button>-->
-
-          <button [matMenuTriggerFor]="menu" mat-mini-fab>
-            <mat-icon>
-              more_vert
-            </mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              <mat-icon color="primary">edit</mat-icon>
-              Edit
-            </button>
-            <button (click)="deleteDocument(document)" mat-menu-item>
-              <mat-icon color="warn">delete</mat-icon>
-              Delete
-            </button>
-          </mat-menu>
-        </div>
-      </mat-card>
-
-      <mat-card (click)="addDocument()" class="hover documentCard add-btn">
-        <mat-card-content style="display: flex;flex-direction: column;align-items: center;">
-          <button disabled mat-fab>
-            <mat-icon>add</mat-icon>
-          </button>
-          <span>Add Document</span>
-        </mat-card-content>
-      </mat-card>
+        </mat-card>
+      </div>
     </div>
   </mat-tab>
-
 
   <!--  <mat-tab label="Bank Details">Bank Details</mat-tab>-->
 </mat-tab-group>

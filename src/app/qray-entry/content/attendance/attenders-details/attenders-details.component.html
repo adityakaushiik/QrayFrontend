@@ -1,7 +1,7 @@
 <div *ngIf="showQr">
   <app-qr-code (emit)="refresh()" [text]="qrScanDetails"></app-qr-code>
 </div>
-<div class="attendanceTable">
+<div *ngIf="!isMobile" class="attendanceTable">
   <table [dataSource]="data" class="mat-elevation-z8 demo-table" mat-table>
     <!-- Date Column -->
     <ng-container matColumnDef="id">
@@ -53,7 +53,7 @@
 
     <ng-container class="ActionsColumn" matColumnDef="actions">
       <th *matHeaderCellDef mat-header-cell>
-        <div id="Actions">
+        <div class="Actions">
           <button (click)="generatePDF()" mat-icon-button matTooltip="Export as pdf">
             <mat-icon>save_alt</mat-icon>
           </button>
@@ -85,3 +85,37 @@
   </table>
 
 </div>
+
+<div *ngIf="isMobile">
+  <div class="Actions">
+    <button (click)="generatePDF()" mat-icon-button matTooltip="Export as pdf">
+      <mat-icon>save_alt</mat-icon>
+    </button>
+    <button (click)="createQRCode()" mat-icon-button matTooltip="add more attendees">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="results">
+    <div (click)="showDetailsBottomSheet(attenders.attendersId)" *ngFor="let attenders of data ; let i = index"
+         class="hover card dashboard-example-card animate__animated animate__fadeIn">
+      <mat-card class="card-class">
+        <div class="card-content-container">
+          <mat-card-header>
+            <mat-card-title>{{i + 1}}. {{attenders.displayName}}</mat-card-title>
+            <mat-card-subtitle>{{attenders.addedDateTime | date:'medium'}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="content">
+            <p><strong>Email : </strong>{{attenders.email}}</p>
+          </mat-card-content>
+        </div>
+        <mat-card-actions class="cardActions">
+          <button class="delete-btn">
+            <mat-icon (click)="deleteAttendanceRecord(attenders.recordId)" color="warn">delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

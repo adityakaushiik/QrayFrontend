@@ -15,7 +15,7 @@
   width: 7%;
 }
 
-#Actions, #ActionsBody {
+.Actions, #ActionsBody {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -27,3 +27,48 @@
 //  //background-color: #9d8fbe;
 //  box-shadow: 12.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
 //}
+.cardActions {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    height: 100%;
+    border-radius: 5px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  //
+  //button:hover {
+  //}
+
+  .share-btn:hover {
+    background-color: #a6a6a6 !important;
+
+    mat-icon {
+      color: white !important;
+    }
+  }
+
+  .delete-btn:hover {
+    background-color: #da2626 !important;
+
+    mat-icon {
+      color: white !important;
+    }
+  }
+
+}
+
+.card-class {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .content {
+    p {
+      margin: 0 0 3px;
+    }
+  }
+}

@@ -165,7 +165,7 @@ $breakpoint-large: 1200px;
 
   .left-container {
     width: 100%;
-    height: 93vh;
+    height: 92.3vh;
     overflow-y: scroll;
 
     .chips {
@@ -188,7 +188,7 @@ $breakpoint-large: 1200px;
     }
   }
 }
-  
+
 .dashboard-example-card {
   //margin-bottom: 3%;
   margin: 10px;
@@ -230,4 +230,14 @@ $breakpoint-large: 1200px;
   left: 0;
   z-index: 71;
   transform: scale(0.95);
+  height: 89%;
+
+  .mat-mdc-card-content {
+    padding: 0px;
+  }
+
+  .body {
+    display: flex;
+  }
 }
+

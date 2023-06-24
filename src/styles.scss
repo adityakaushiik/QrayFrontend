@@ -41,8 +41,8 @@ html, body {
   transition: all 0.1s ease;
   margin: 10px;
   width: 300px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
   overflow: hidden;
   //position: relative;
   cursor: pointer;
@@ -68,11 +68,11 @@ html, body {
 ///////////////////////////////
 
 .mat-drawer-content {
-  position: relative !important;
-  z-index: 1 !important;
-  display: block !important;
-  height: 100vh !important;
-  overflow: hidden !important;
+  //position: relative !important;
+  //z-index: 1 !important;
+  //display: block !important;
+  //height: 99vh !important;
+  //overflow: hidden !important;
   //width: 100%;
 }
 
