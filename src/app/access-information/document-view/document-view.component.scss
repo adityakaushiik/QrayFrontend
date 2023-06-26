@@ -13,7 +13,6 @@ $breakpoint-large: 1200px;
   .documentCard {
     margin: 5px !important;
     width: 300px !important;
-    justify-content: space-between;
   }
 }
 
@@ -25,10 +24,13 @@ $breakpoint-large: 1200px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 
   .actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
     #saveBtn {
       mat-icon {
@@ -37,7 +39,7 @@ $breakpoint-large: 1200px;
     }
 
     button {
-      margin: 0px 10px;
+      //margin: 0px 10px;
       background-color: transparent;
       box-shadow: none;
 

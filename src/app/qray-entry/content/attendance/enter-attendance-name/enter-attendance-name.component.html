@@ -1,0 +1,16 @@
+<div style="
+display: flex ;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 10px;
+">
+  <mat-form-field>
+    <input #name matInput placeholder="Enter Attendance Name" required type="text">
+  </mat-form-field>
+
+
+  <button (click)="closeDialog(name.value)" color="primary" disabled="{{name.value===''}}" mat-raised-button
+          type="submit">Create
+  </button>
+</div>

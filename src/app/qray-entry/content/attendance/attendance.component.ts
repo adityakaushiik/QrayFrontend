@@ -5,6 +5,8 @@ import {AttendanceInfo} from "../../../models/AttendanceInfo";
 import {AttendersInfo} from "../../../models/AttendersInfo";
 import {MatDialog} from "@angular/material/dialog";
 import {AttendersDetailsComponent} from "./attenders-details/attenders-details.component";
+import {QrScannerComponent} from "./qr-scanner/qr-scanner.component";
+import {EnterAttendanceNameComponent} from "./enter-attendance-name/enter-attendance-name.component";
 
 @Component({
   selector: 'app-attendance',
@@ -25,7 +27,6 @@ export class AttendanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.utilsService.showLoading();
-
     this.getAttendanceListing();
   }
 
@@ -50,13 +51,24 @@ export class AttendanceComponent implements OnInit {
   }
 
   createNewAttendance() {
-    this.accountService.createAttendance().subscribe((res: any) => {
-      console.log(res);
-    }, (err) => {
-      console.log(err);
-    }, () => {
-      this.getAttendanceListing();
-      this.utilsService.successSnackBar('Attendance created successfully');
+    this.dialog.open(EnterAttendanceNameComponent, {
+      // width: '20vw',
+      // maxWidth: '98vw',
+      // height: '15vh',
+
+    }).afterClosed().subscribe((res: string) => {
+      if (res) {
+        this.accountService.createAttendance(res).subscribe((res: any) => {
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        }, () => {
+          this.getAttendanceListing();
+          this.utilsService.successSnackBar('Attendance created successfully');
+        });
+      } else {
+        this.utilsService.warningSnackBar('No name entered');
+      }
     });
   }
 
@@ -71,4 +83,10 @@ export class AttendanceComponent implements OnInit {
     });
   }
 
+  openScannerDialog() {
+    this.dialog.open(QrScannerComponent, {
+      // width: '90vw',
+      maxWidth: '90vw',
+    });
+  }
 }

@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginResponse} from "../models/LoginResponse";
 import {accessUrl, baseUrl} from "../endpoints";
+import {MarkAttendance} from "../qray-entry/content/attendance/qr-scanner/qr-scanner.component";
 
 @Injectable({
   providedIn: 'root'
@@ -120,8 +121,9 @@ export class AccountService {
     });
   }
 
-  public createAttendance() {
+  public createAttendance(name: string) {
     return this.http.get<any>(this.baseUrl + 'attendance/create', {
+      params: {name: name},
       headers: this.header
     });
   }
@@ -141,9 +143,9 @@ export class AccountService {
     });
   }
 
-  public markAttendance(attendanceId: string, attendersId: string) {
-    return this.http.get(this.baseUrl + 'attendance/mark', {
-      params: {attendanceId: attendanceId, attenderId: attendersId},
+  public markAttendance(uid: string, markAttendance: MarkAttendance) {
+    return this.http.post(this.baseUrl + 'attendance/mark', markAttendance, {
+      params: {uid: uid},
       headers: this.header
     });
   }

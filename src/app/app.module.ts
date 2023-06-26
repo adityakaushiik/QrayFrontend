@@ -30,21 +30,9 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
 import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 import {MatMenuModule} from "@angular/material/menu";
 import {ConfirmDialogComponent} from './utils/confirm-dialog/confirm-dialog.component';
-import { UserDetailBottomSheetComponent } from './utils/user-detail-bottom-sheet/user-detail-bottom-sheet.component';
-// import {WebSocketService} from "./services/web-socket.service";
-
-// export const environment = {
-//   production: false,
-//   socketUrl: 'ws://localhost:8080/socket.io',
-// };
-//
-//
-// const config: SocketIoConfig = {
-//   url: environment.socketUrl, // socket server url;
-//   options: {
-//     transports: ['websocket']
-//   }
-// }
+import {UserDetailBottomSheetComponent} from './utils/user-detail-bottom-sheet/user-detail-bottom-sheet.component';
+import {QrScannerComponent} from './qray-entry/content/attendance/qr-scanner/qr-scanner.component';
+import { EnterAttendanceNameComponent } from './qray-entry/content/attendance/enter-attendance-name/enter-attendance-name.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +51,9 @@ import { UserDetailBottomSheetComponent } from './utils/user-detail-bottom-sheet
     AddDocumentComponent,
     CreateNewQrDialogComponent,
     ConfirmDialogComponent,
-    UserDetailBottomSheetComponent
+    UserDetailBottomSheetComponent,
+    QrScannerComponent,
+    EnterAttendanceNameComponent
   ],
   imports: [
     CommonModule,
@@ -79,8 +69,8 @@ import { UserDetailBottomSheetComponent } from './utils/user-detail-bottom-sheet
     ClipboardModule,
     CdkVirtualScrollableElement,
     MatMenuModule,
-    // SocketIoModule.forRoot(config)
   ],
+  // SocketIoModule.forRoot(config)
   // WebSocketService
   providers: [],
   bootstrap: [AppComponent]

@@ -72,3 +72,18 @@
     }
   }
 }
+
+.emailHeaderDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .copyEmailsBtn {
+    margin-left: 5px;
+
+    mat-icon {
+      font-size: 20px;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+//h1,
+//h5,
+//p {
+//  font-weight: 600;
+//  word-break: break-all;
+//  font-family: 'Courier New', Courier, monospace;
+//}
+//
+//div {
+//  text-align: center;
+//  background: #fdfdfd;
+//
+//  button {
+//    border-radius: 50%;
+//    height: 60px;
+//    width: 60px;
+//    margin: 4px;
+//
+//    &disabled {
+//      cursor: no-drop;
+//    }
+//  }
+//
+//  .data {
+//    background: antiquewhite;
+//    border-radius: 5px;
+//  }
+//}
+
+
+#qr-video {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1) !important;
+  display: flex;
+}
+
+.scanner-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  horiz-align: center;
+}
+
+/////////////////////////////////////////////////////////
+.fingerprint {
+  width: 50%;
+  height: 50%;
+  border: solid 3px #AAB8BE;
+  position: absolute;
+  overflow: hidden;
+}
+
+.fingerprint.scanning::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background-image: linear-gradient(
+      rgba(170, 184, 190, 0),
+      rgba(170, 184, 190, .8));
+  animation: scanning 1.3s linear infinite;
+}
+
+@keyframes scanning {
+  100% {
+    transform: translate(0, 50vh);
+  }
+}

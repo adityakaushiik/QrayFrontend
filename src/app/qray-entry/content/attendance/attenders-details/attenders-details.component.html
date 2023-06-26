@@ -40,7 +40,16 @@
 
     <!-- File Column -->
     <ng-container matColumnDef="email">
-      <th *matHeaderCellDef id="reimbursementHistoryFile" mat-header-cell>Email</th>
+      <th *matHeaderCellDef id="attendanceDetailsEmailHeader" mat-header-cell>
+        <div class="emailHeaderDiv">
+          Email
+          <button cdkCopyToClipboard="{{copyAllEmails()}}" class="copyEmailsBtn fab-with-no-color"
+                  mat-mini-fab
+                  matTooltip="copy all emails">
+            <mat-icon color="primary">content_copy</mat-icon>
+          </button>
+        </div>
+      </th>
       <td *matCellDef="let element" mat-cell>
         <div class="form-group">
           <span>
@@ -96,10 +105,10 @@
     </button>
   </div>
   <div class="results">
-    <div (click)="showDetailsBottomSheet(attenders.attendersId)" *ngFor="let attenders of data ; let i = index"
+    <div *ngFor="let attenders of data ; let i = index"
          class="hover card dashboard-example-card animate__animated animate__fadeIn">
       <mat-card class="card-class">
-        <div class="card-content-container">
+        <div (click)="showDetailsBottomSheet(attenders.attendersId)" class="card-content-container">
           <mat-card-header>
             <mat-card-title>{{i + 1}}. {{attenders.displayName}}</mat-card-title>
             <mat-card-subtitle>{{attenders.addedDateTime | date:'medium'}}</mat-card-subtitle>

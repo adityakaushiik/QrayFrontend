@@ -29,7 +29,6 @@ export class AttendersDetailsComponent implements OnInit {
               private utilsService: UtilsService,
               private accountService: AccountService,
   ) {
-    // private webSocketService: WebSocketService
   }
 
   get isMobile(): boolean {
@@ -126,6 +125,15 @@ export class AttendersDetailsComponent implements OnInit {
 
   showDetailsBottomSheet(userId: string) {
     this.utilsService.openUserBottomSheet(userId);
+  }
+
+  copyAllEmails() {
+    let emails = '';
+    this.data.forEach((value, index) => {
+      emails += value.email + ', ';
+    });
+    // this.utilsService.copyToClipboard(emails);
+    return emails;
   }
 }
 
