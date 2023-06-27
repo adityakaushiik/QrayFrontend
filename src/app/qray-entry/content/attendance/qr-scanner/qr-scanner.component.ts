@@ -51,6 +51,7 @@ export class QrScannerComponent implements AfterViewInit {
       });
     }).catch((error: any) => {
       console.error('Error accessing camera stream:', error);
+      this.utilsService.errorSnackBar('No camera found');
     });
   }
 

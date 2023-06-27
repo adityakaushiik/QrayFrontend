@@ -39,9 +39,12 @@ export class AccountService {
     });
   }
 
+
   login(email: string, password: string) {
     return this.http.post<LoginResponse>(this.baseUrl + 'user/login',
+
       {email: email, password: password},
+
       {headers: new HttpHeaders({'Content-Type': 'application/json'})}
     ).pipe(map(user => {
       localStorage.setItem('QrayUser', JSON.stringify(user));
@@ -49,6 +52,7 @@ export class AccountService {
       return user;
     }));
   }
+
 
   //
   // email: string,

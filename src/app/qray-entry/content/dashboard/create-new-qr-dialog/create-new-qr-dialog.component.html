@@ -49,7 +49,9 @@
 
   <mat-step [hidden]="!backendResponseReceived">
     <ng-template matStepLabel>Share Link</ng-template>
-    <canvas id="qrcodeCanvas"></canvas>
+    <div style="display: flex ; justify-content: center ; flex-direction: column ; align-items: center ;">
+      <canvas id="qrcodeCanvas"></canvas>
+    </div>
     <div style="display: flex;flex-direction: row;align-items: baseline;justify-content: space-between;">
       <mat-form-field class="example-full-width" style="width: 100%;">
         <mat-label>Link</mat-label>
@@ -61,7 +63,6 @@
         <mat-icon>content_copy</mat-icon>
       </button>
     </div>
-
     <button (click)="this.bottomSheetRef.dismiss()" mat-raised-button>Done</button>
   </mat-step>
 </mat-stepper>
